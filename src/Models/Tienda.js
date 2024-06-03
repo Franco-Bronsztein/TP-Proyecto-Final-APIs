@@ -9,4 +9,4 @@ export default class Tienda {
     toString() {
         return `Nombre: ${this.nombre}, Id: ${this.id}, Direccion: ${this.direccion}, Foto: ${this.foto}, Cantestrellas: ${this.cantestrellas}`
     }
-    }
+}
