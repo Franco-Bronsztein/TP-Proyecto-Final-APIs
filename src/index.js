@@ -12,7 +12,13 @@ app.use(express.json());
 app.get('/', function (req, res)  {
     res.status(200).send(`..........`)
   })
+
+app.get('/infoTiendas', function (req, res) {
+    res.status(200).send(``)
+})  // Devuelve Objeto
+
+
   
-  app.listen(port, () => {
+app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
     })
