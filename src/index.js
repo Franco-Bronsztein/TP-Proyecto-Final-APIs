@@ -20,8 +20,7 @@ var Connection = require('tedious').Connection;
 
 
 
-
-import Tienda from './Models/Tienda' 
+import Tienda from './Models/Tienda.js' 
 import express from "express"; // hacer npm i express
 import cors from "cors"; // hacer npm i cors
 const app = express();
