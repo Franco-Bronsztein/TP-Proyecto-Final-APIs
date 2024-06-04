@@ -1,5 +1,5 @@
 // En postman se usa "localhost:3000"
-// instañar npm install tedious 
+// instalar npm install tedious 
 var Connection = require('tedious').Connection;  
     var config = {  
         server: 'A-PHZ2-CIDI-29',  //A-PHZ2-CIDI-29   Nombre de compu
