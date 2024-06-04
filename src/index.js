@@ -1,8 +1,8 @@
 // En postman se usa "localhost:3000"
 // instalar npm install tedious 
-var Connection = require('tedious').Connection;  
+ /* var Connection = require('tedious').Connection;  
     var config = {  
-        server: 'A-PHZ2-CIDI-29',  //A-PHZ2-CIDI-29   Nombre de compu
+        server: '',  //A-PHZ2-CIDI-29   Nombre de compu
         authentication: {
             type: 'default',
             options: {
@@ -18,9 +18,10 @@ var Connection = require('tedious').Connection;
     
     connection.connect();
 
-
+*/    //Si se comemta la concexion a BD(no anda tampoco) corre el programa
 
 import Tienda from './Models/Tienda.js' 
+import Usuario from './Models/Usuario.js' 
 import express from "express"; // hacer npm i express
 import cors from "cors"; // hacer npm i cors
 const app = express();
@@ -34,7 +35,7 @@ app.get('/', function (req, res)  {
   })
 
 app.get('/infoTiendas', function (req, res) {
-    res.status(200).send(``)
+    res.status(200).send(`..........`)
 })  // Devuelve Objeto
 
 
