@@ -1,12 +1,11 @@
 import DBConfig from '../configs/db-configs.js'
 import pkg from 'pg'
-const { Client, Pool} = pkg
-
+const { Client, Pool } = pkg;
 
 export default class TiendaRepository {
-    getAllAsync = async = () => {
+    getAllAsync = async () => {
         let returnArray = null;
-        const client  = new Client(DBConfig);
+        const client = new Client(DBConfig);
         try {
             await client.connect();
             const sql = 'SELECT * FROM Local';
@@ -17,6 +16,5 @@ export default class TiendaRepository {
             console.log(error);
         }
         return returnArray;
-    }
-    getAllAsync 
+    } 
 }
