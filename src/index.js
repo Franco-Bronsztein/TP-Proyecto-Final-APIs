@@ -1,27 +1,8 @@
 // En postman se usa "localhost:3000"
-// instalar npm install tedious 
- /* var Connection = require('tedious').Connection;  
-    var config = {  
-        server: '',  //A-PHZ2-CIDI-29   Nombre de compu
-        authentication: {
-            type: 'default',
-            options: {
-              trustedConnection: true
-            }
-        }
-    };  
-    var connection = new Connection(config);  
-    connection.on('connect', function(err) {  
-        // If no error, then good to proceed.
-        console.log("Connected");  
-    });
-    
-    connection.connect();
+//instalar npm i pg
 
-*/    //Si se comemta la concexion a BD(no anda tampoco) corre el programa
-
-import Tienda from './Models/Tienda.js' 
-import Usuario from './Models/Usuario.js' 
+import Tienda from './Entities/Tienda.js' 
+import Usuario from './Entities/Usuario.js' 
 import express from "express"; // hacer npm i express
 import cors from "cors"; // hacer npm i cors
 const app = express();

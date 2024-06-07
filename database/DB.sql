@@ -1,0 +1,256 @@
+USE [master]
+GO
+/****** Object:  Database [FoodSave]    Script Date: 27/5/2024 12:08:01 ******/
+CREATE DATABASE [FoodSave]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'FoodSave', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\FoodSave.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'FoodSave_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\FoodSave_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+GO
+ALTER DATABASE [FoodSave] SET COMPATIBILITY_LEVEL = 140
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [FoodSave].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [FoodSave] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [FoodSave] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [FoodSave] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [FoodSave] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [FoodSave] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [FoodSave] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [FoodSave] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [FoodSave] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [FoodSave] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [FoodSave] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [FoodSave] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [FoodSave] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [FoodSave] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [FoodSave] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [FoodSave] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [FoodSave] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [FoodSave] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [FoodSave] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [FoodSave] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [FoodSave] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [FoodSave] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [FoodSave] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [FoodSave] SET RECOVERY FULL 
+GO
+ALTER DATABASE [FoodSave] SET  MULTI_USER 
+GO
+ALTER DATABASE [FoodSave] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [FoodSave] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [FoodSave] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [FoodSave] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [FoodSave] SET DELAYED_DURABILITY = DISABLED 
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'FoodSave', N'ON'
+GO
+ALTER DATABASE [FoodSave] SET QUERY_STORE = OFF
+GO
+USE [FoodSave]
+GO
+/****** Object:  User [alumno]    Script Date: 27/5/2024 12:08:01 ******/
+CREATE USER [alumno] FOR LOGIN [alumno] WITH DEFAULT_SCHEMA=[dbo]
+GO
+/****** Object:  Table [dbo].[Carrito]    Script Date: 27/5/2024 12:08:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Carrito](
+	[Id] [int] NOT NULL,
+	[IdUsuario] [int] IDENTITY(1,1) NOT NULL,
+	[IdPaquete] [int] NOT NULL,
+	[PedidoActivo] [bit] NOT NULL,
+ CONSTRAINT [PK_Carrito] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Direccion]    Script Date: 27/5/2024 12:08:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Direccion](
+	[Id] [int] NOT NULL,
+	[ubicacion] [nvarchar](100) NOT NULL,
+	[idUsuario] [int] NOT NULL,
+	[idTipo] [int] IDENTITY(1,1) NOT NULL,
+	[referencia] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_Direccion] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Favoritos]    Script Date: 27/5/2024 12:08:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Favoritos](
+	[Id] [int] NOT NULL,
+	[IdUsuario] [int] IDENTITY(1,1) NOT NULL,
+	[IdLocal] [int] NOT NULL,
+ CONSTRAINT [PK_Favoritos] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Local]    Script Date: 27/5/2024 12:08:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Local](
+	[Id] [int] NOT NULL,
+	[nombre] [nvarchar](100) NULL,
+	[direccion] [nvarchar](100) NOT NULL,
+	[Idproductos] [int] IDENTITY(1,1) NOT NULL,
+	[foto] [nvarchar](100) NOT NULL,
+	[cantestrellas] [int] NOT NULL,
+ CONSTRAINT [PK_Local] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[metodosDePago]    Script Date: 27/5/2024 12:08:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[metodosDePago](
+	[Id] [int] NOT NULL,
+	[IdUsuario] [int] IDENTITY(1,1) NOT NULL,
+	[tipo] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_metodosDePago] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Pedido]    Script Date: 27/5/2024 12:08:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Pedido](
+	[Id] [int] NOT NULL,
+	[delivery] [bit] NOT NULL,
+	[IdMetodoDePago] [int] NOT NULL,
+	[IdUsuario] [int] NOT NULL,
+	[IdLocal] [int] NOT NULL,
+	[cant] [int] NOT NULL,
+	[fecha] [timestamp] NOT NULL,
+	[precio] [int] NOT NULL,
+	[referencia] [nvarchar](100) NOT NULL,
+	[codigoVenta] [nvarchar](6) NOT NULL,
+ CONSTRAINT [PK_Pedido] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Productos]    Script Date: 27/5/2024 12:08:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Productos](
+	[id] [int] NOT NULL,
+	[nombre] [nvarchar](100) NOT NULL,
+	[preciooriginal] [int] NOT NULL,
+	[precioxpagina] [int] NOT NULL,
+	[Descripcion] [nvarchar](100) NOT NULL,
+	[cantDisponible] [int] NOT NULL,
+	[Idlocal] [int] IDENTITY(1,1) NOT NULL,
+ CONSTRAINT [PK_Productos] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Reseña]    Script Date: 27/5/2024 12:08:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Reseña](
+	[Id] [int] NOT NULL,
+	[IdUsuario] [int] NOT NULL,
+	[IdLocal] [int] IDENTITY(1,1) NOT NULL,
+	[cantestrellas] [int] NOT NULL,
+	[comentario] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_Reseña] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Tipo]    Script Date: 27/5/2024 12:08:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Tipo](
+	[Id] [int] NOT NULL,
+	[Descripcion] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_Tipo] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Usuario]    Script Date: 27/5/2024 12:08:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Usuario](
+	[Id] [int] NOT NULL,
+	[nombre] [nvarchar](100) NOT NULL,
+	[apellido] [nvarchar](100) NOT NULL,
+	[telefono] [int] NOT NULL,
+	[mail] [nvarchar](100) NOT NULL,
+	[contraseña] [nvarchar](100) NOT NULL,
+	[Vendedor] [bit] NOT NULL
+) ON [PRIMARY]
+GO
+USE [master]
+GO
+ALTER DATABASE [FoodSave] SET  READ_WRITE 
+GO
