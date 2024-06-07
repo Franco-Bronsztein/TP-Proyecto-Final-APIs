@@ -3,6 +3,7 @@
 
 import Tienda from './Entities/Tienda.js' 
 import Usuario from './Entities/Usuario.js' 
+import TiendaRouter from '../src/Controllers/tienda-Controller.js'
 import express from "express"; // hacer npm i express
 import cors from "cors"; // hacer npm i cors
 const app = express();
@@ -18,7 +19,6 @@ app.get('/', function (req, res)  {
 app.use('/infoTiendas', TiendaRouter) 
 
 
-app.use()
 
   
 app.listen(port, () => {
