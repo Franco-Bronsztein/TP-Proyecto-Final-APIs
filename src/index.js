@@ -8,17 +8,17 @@ import cors from "cors"; // hacer npm i cors
 const app = express();
 const port = 3000;
 
-app.use(cors()); 
+app.use(cors());  
 app.use(express.json()); 
 
 app.get('/', function (req, res)  {
     res.status(200).send(`..........`)
   })
 
-app.get('/infoTiendas', function (req, res) {
-    res.status(200).send(`..........`)
-})  // Devuelve Objeto
+app.use('/infoTiendas', TiendaRouter) 
 
+
+app.use()
 
   
 app.listen(port, () => {
