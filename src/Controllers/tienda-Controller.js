@@ -15,6 +15,6 @@ router.get('', async (req, res) => {
         respuesta = res.status(500).send('Error Interno')
     }
     return respuesta;
-})  // Devuelve Objeto
+}) 
 
 export default router;
