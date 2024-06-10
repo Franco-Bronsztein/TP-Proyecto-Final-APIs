@@ -6,6 +6,7 @@ const router = Router();
 const svc =  new direccionService();
 router.get('/:idusuario', async (req, res) => {
     let respuesta;
+    const idusuario = req.params.idusuario; 
     const returnArray = await svc.getByIdAsync(idusuario);
     if(returnArray != null)
     {
