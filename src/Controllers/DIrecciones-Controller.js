@@ -4,9 +4,9 @@ import direccionService from '../service/direccion-service.js'
 
 const router = Router();
 const svc =  new direccionService();
-router.get('', async (req, res) => {
+router.get('/:idusuario', async (req, res) => {
     let respuesta;
-    const returnArray = await svc.getAllAsync();
+    const returnArray = await svc.getByIdAsync(idusuario);
     if(returnArray != null)
     {
         respuesta = res.status(200).json(returnArray);

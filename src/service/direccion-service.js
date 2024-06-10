@@ -1,9 +1,9 @@
 import direccionRepository from '../repository/direccion-Respository.js'
 
 export default class direccionService{
-    getAllAsync = async () => {
+    getByIdAsync = async (idusuario) => {
         const repo = new direccionRepository();
-        const returnArray = await repo.getAllAsync();
+        const returnArray = await repo.getByIdAsync();
         return returnArray;
     }
      getAllByNameAsync = async () => {

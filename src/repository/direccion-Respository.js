@@ -5,7 +5,7 @@ import pkg from 'pg'
 const { Client, Pool } = pkg;
 
 export default class direccionRepository {
-    getAllAsync = async () => {
+    getByIdAsync = async (idusuario) => {
         let returnArray = null;
         const client = new Client(DBConfig);
         try {
