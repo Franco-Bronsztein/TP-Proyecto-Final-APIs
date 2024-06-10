@@ -4,8 +4,6 @@ import TiendaService from '../service/tienda-service.js'
 
 const router = Router();
 const svc =  new TiendaService();
-
-
 router.get('', async (req, res) => {
     let respuesta;
     const returnArray = await svc.getAllAsync();

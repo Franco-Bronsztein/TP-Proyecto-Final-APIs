@@ -1,8 +1,6 @@
 // En postman se usa "localhost:3000"
 //instalar npm i pg
 
-import Tienda from './Entities/Tienda.js' 
-import Usuario from './Entities/Usuario.js' 
 import TiendaRouter from '../src/Controllers/tienda-Controller.js'
 import express from "express"; // hacer npm i express
 import cors from "cors"; // hacer npm i cors
@@ -16,7 +14,9 @@ app.get('/', function (req, res)  {
     res.status(200).send(`..........`)
   })
 
-app.use('/infoTiendas', TiendaRouter) 
+app.use('/infoTiendas', TiendaRouter)
+
+app.use('/direcciones', TiendaRouter)
 
 
 

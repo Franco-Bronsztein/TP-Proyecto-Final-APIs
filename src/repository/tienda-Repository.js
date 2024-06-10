@@ -20,3 +20,4 @@ export default class TiendaRepository {
         return returnArray;
     } 
 }
+

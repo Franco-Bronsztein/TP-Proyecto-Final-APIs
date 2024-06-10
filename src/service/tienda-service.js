@@ -8,7 +8,7 @@ export default class tinedaService{
     }
      getAllByNameAsync = async () => {
         const repo = new TiendaRepository();
-        const returnArray = await repo.getAllByNameAsync();
+        const returnArray = await repo.getAllByNameAsync(id);
         return returnArray;
     }
 }
