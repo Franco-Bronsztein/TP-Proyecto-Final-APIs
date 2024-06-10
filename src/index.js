@@ -2,6 +2,7 @@
 //instalar npm i pg
 
 import TiendaRouter from '../src/Controllers/tienda-Controller.js'
+import s from '../src/Controllers/DIrecciones-Controller.js'
 import express from "express"; // hacer npm i express
 import cors from "cors"; // hacer npm i cors
 const app = express();
@@ -16,7 +17,7 @@ app.get('/', function (req, res)  {
 
 app.use('/infoTiendas', TiendaRouter)
 
-app.use('/direccion', TiendaRouter)
+app.use('/direccion', DireccionRouter)
 
 
 
