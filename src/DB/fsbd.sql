@@ -5,7 +5,7 @@
 -- Dumped from database version 16.2
 -- Dumped by pg_dump version 16.0
 
--- Started on 2024-06-24 08:05:12
+-- Started on 2024-06-24 08:25:11
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -547,6 +547,9 @@ ALTER TABLE ONLY public.usuario ALTER COLUMN id SET DEFAULT nextval('public.usua
 -- Data for Name: direccion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO public.direccion VALUES (1, 'Vera 797
+', 1, 2, 'Alado de kiosco rojo y casa de porton verde
+');
 
 
 --
@@ -619,6 +622,11 @@ INSERT INTO public.local VALUES (17, 'Madre', 'Vera 600', 1, 'https://www.cucina
 -- Data for Name: tipo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO public.tipo VALUES (1, 'casa');
+INSERT INTO public.tipo VALUES (2, 'Oficina
+');
+INSERT INTO public.tipo VALUES (3, 'Otro
+');
 
 
 --
@@ -1075,7 +1083,7 @@ ALTER TABLE ONLY public."reseña"
     ADD CONSTRAINT "reseña_idusuario_fkey2" FOREIGN KEY (idusuario) REFERENCES public.usuario(id) NOT VALID;
 
 
--- Completed on 2024-06-24 08:05:12
+-- Completed on 2024-06-24 08:25:11
 
 --
 -- PostgreSQL database dump complete

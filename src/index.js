@@ -15,7 +15,7 @@ app.get('/', function (req, res)  {
     res.status(200).send(`..........`)
   })
 
-app.use('/infoTiendas', TiendaRouter)
+app.use('/  ', TiendaRouter)
 
 app.use('/direccion', DireccionRouter)
 

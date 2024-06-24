@@ -11,7 +11,7 @@ export default class direccionRepository {
         console.log(idusuario)
         try {
             await client.connect();
-            const sql = `SELECT ubicacion FROM direccion WHERE idusuario = $1`;
+            const sql = `SELECT ubicacion FROM direccion         WHERE idusuario = $1`;
             const values = [idusuario]
             console.log(values)
             const result = await client.query(sql,values);
