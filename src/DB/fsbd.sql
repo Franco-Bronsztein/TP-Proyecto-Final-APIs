@@ -448,7 +448,22 @@ ALTER SEQUENCE public.tipo_id_seq OWNER TO postgres;
 
 ALTER SEQUENCE public.tipo_id_seq OWNED BY public.tipo.id;
 
+CREATE TABLE IF NOT EXISTS detalle_pedido (
+    id_detalle_pedido SERIAL PRIMARY KEY,
+    id_pedido INT NOT NULL,
+    id_local INT NOT NULL,
+    id_usuario INT NOT NULL,
+    id_producto INT NOT NULL,
+    FOREIGN KEY (id_pedido) REFERENCES pedidos (id_pedido),
+    FOREIGN KEY (id_local) REFERENCES locales (id_local),
+    FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario),
+    FOREIGN KEY (id_producto) REFERENCES productos (id_producto)
+);
 
+INSERT INTO detalle_pedido (id_pedido, id_local, id_usuario, id_producto) VALUES 
+(1, 1, 1, 1), 
+(2, 2, 1, 2), 
+(3, 3, 1, 3);
 --
 -- TOC entry 233 (class 1259 OID 16437)
 -- Name: usuario; Type: TABLE; Schema: public; Owner: postgres

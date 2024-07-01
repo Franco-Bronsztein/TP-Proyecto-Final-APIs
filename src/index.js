@@ -19,6 +19,7 @@ app.use('/infoTiendas', TiendaRouter)
 
 app.use('/direccion', DireccionRouter)
 
+app.use('/recomendados', )
 
 
   
