@@ -3,7 +3,7 @@
 
 import TiendaRouter from '../src/Controllers/tienda-Controller.js'
 import DireccionRouter from '../src/Controllers/DIrecciones-Controller.js'
-import RecomendadosRouter from 
+import RecomendadosRouter from '../src/Controllers/Recomendados-Controller.js'
 import express from "express"; // hacer npm i express
 import cors from "cors"; // hacer npm i cors
 const app = express();
