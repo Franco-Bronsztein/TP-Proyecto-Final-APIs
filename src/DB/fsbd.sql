@@ -5,7 +5,7 @@
 -- Dumped from database version 16.2
 -- Dumped by pg_dump version 16.0
 
--- Started on 2024-06-25 08:03:02
+-- Started on 2024-07-01 08:09:06
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -42,7 +42,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 219 (class 1259 OID 16407)
+-- TOC entry 215 (class 1259 OID 16488)
 -- Name: Recomendados; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -56,7 +56,7 @@ CREATE TABLE public."Recomendados" (
 ALTER TABLE public."Recomendados" OWNER TO postgres;
 
 --
--- TOC entry 215 (class 1259 OID 16399)
+-- TOC entry 216 (class 1259 OID 16491)
 -- Name: carrito; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -71,7 +71,7 @@ CREATE TABLE public.carrito (
 ALTER TABLE public.carrito OWNER TO postgres;
 
 --
--- TOC entry 216 (class 1259 OID 16402)
+-- TOC entry 217 (class 1259 OID 16494)
 -- Name: carrito_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -88,7 +88,7 @@ ALTER SEQUENCE public.carrito_id_seq OWNER TO postgres;
 
 --
 -- TOC entry 4915 (class 0 OID 0)
--- Dependencies: 216
+-- Dependencies: 217
 -- Name: carrito_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -96,26 +96,27 @@ ALTER SEQUENCE public.carrito_id_seq OWNED BY public.carrito.id;
 
 
 --
--- TOC entry 236 (class 1259 OID 16613)
+-- TOC entry 236 (class 1259 OID 16702)
 -- Name: detallePedido; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public."detallePedido" (
-    id integer NOT NULL,
-    idlocal numeric,
-    idusuario numeric NOT NULL,
-    "detallePedido" numeric
+    "ID" integer NOT NULL,
+    "FK_IDLocal" numeric(1000,0) NOT NULL,
+    "FK_IDUsuario" numeric(1000,0) NOT NULL,
+    "FK_IDProducto" numeric(1000,0) NOT NULL,
+    "FK_IDPedido" numeric(1000,0) NOT NULL
 );
 
 
 ALTER TABLE public."detallePedido" OWNER TO postgres;
 
 --
--- TOC entry 235 (class 1259 OID 16612)
--- Name: detallePedido_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- TOC entry 235 (class 1259 OID 16701)
+-- Name: detallePedido_ID_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public."detallePedido_id_seq"
+CREATE SEQUENCE public."detallePedido_ID_seq"
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -124,19 +125,19 @@ CREATE SEQUENCE public."detallePedido_id_seq"
     CACHE 1;
 
 
-ALTER SEQUENCE public."detallePedido_id_seq" OWNER TO postgres;
+ALTER SEQUENCE public."detallePedido_ID_seq" OWNER TO postgres;
 
 --
 -- TOC entry 4916 (class 0 OID 0)
 -- Dependencies: 235
--- Name: detallePedido_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: detallePedido_ID_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public."detallePedido_id_seq" OWNED BY public."detallePedido".id;
+ALTER SEQUENCE public."detallePedido_ID_seq" OWNED BY public."detallePedido"."ID";
 
 
 --
--- TOC entry 217 (class 1259 OID 16403)
+-- TOC entry 218 (class 1259 OID 16501)
 -- Name: direccion; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -152,7 +153,7 @@ CREATE TABLE public.direccion (
 ALTER TABLE public.direccion OWNER TO postgres;
 
 --
--- TOC entry 218 (class 1259 OID 16406)
+-- TOC entry 219 (class 1259 OID 16504)
 -- Name: direccion_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -169,7 +170,7 @@ ALTER SEQUENCE public.direccion_id_seq OWNER TO postgres;
 
 --
 -- TOC entry 4917 (class 0 OID 0)
--- Dependencies: 218
+-- Dependencies: 219
 -- Name: direccion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -177,7 +178,7 @@ ALTER SEQUENCE public.direccion_id_seq OWNED BY public.direccion.id;
 
 
 --
--- TOC entry 220 (class 1259 OID 16410)
+-- TOC entry 220 (class 1259 OID 16505)
 -- Name: favoritos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -202,7 +203,7 @@ ALTER SEQUENCE public.favoritos_id_seq OWNED BY public."Recomendados".id;
 
 
 --
--- TOC entry 221 (class 1259 OID 16411)
+-- TOC entry 221 (class 1259 OID 16506)
 -- Name: local; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -218,7 +219,7 @@ CREATE TABLE public.local (
 ALTER TABLE public.local OWNER TO postgres;
 
 --
--- TOC entry 222 (class 1259 OID 16416)
+-- TOC entry 222 (class 1259 OID 16511)
 -- Name: local_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -243,7 +244,7 @@ ALTER SEQUENCE public.local_id_seq OWNED BY public.local.id;
 
 
 --
--- TOC entry 223 (class 1259 OID 16417)
+-- TOC entry 223 (class 1259 OID 16512)
 -- Name: metodosdepago; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -257,7 +258,7 @@ CREATE TABLE public.metodosdepago (
 ALTER TABLE public.metodosdepago OWNER TO postgres;
 
 --
--- TOC entry 224 (class 1259 OID 16420)
+-- TOC entry 224 (class 1259 OID 16515)
 -- Name: metodosdepago_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -282,7 +283,7 @@ ALTER SEQUENCE public.metodosdepago_id_seq OWNED BY public.metodosdepago.id;
 
 
 --
--- TOC entry 225 (class 1259 OID 16421)
+-- TOC entry 225 (class 1259 OID 16516)
 -- Name: pedido; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -303,7 +304,7 @@ CREATE TABLE public.pedido (
 ALTER TABLE public.pedido OWNER TO postgres;
 
 --
--- TOC entry 226 (class 1259 OID 16424)
+-- TOC entry 226 (class 1259 OID 16519)
 -- Name: pedido_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -328,7 +329,7 @@ ALTER SEQUENCE public.pedido_id_seq OWNED BY public.pedido.id;
 
 
 --
--- TOC entry 227 (class 1259 OID 16425)
+-- TOC entry 227 (class 1259 OID 16520)
 -- Name: productos; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -346,7 +347,7 @@ CREATE TABLE public.productos (
 ALTER TABLE public.productos OWNER TO postgres;
 
 --
--- TOC entry 228 (class 1259 OID 16428)
+-- TOC entry 228 (class 1259 OID 16523)
 -- Name: productos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -371,11 +372,11 @@ ALTER SEQUENCE public.productos_id_seq OWNED BY public.productos.id;
 
 
 --
--- TOC entry 229 (class 1259 OID 16429)
--- Name: reseÃ±a; Type: TABLE; Schema: public; Owner: postgres
+-- TOC entry 229 (class 1259 OID 16524)
+-- Name: reseña; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public."reseÃ±a" (
+CREATE TABLE public."reseña" (
     id integer NOT NULL,
     idusuario integer NOT NULL,
     idlocal integer NOT NULL,
@@ -384,10 +385,10 @@ CREATE TABLE public."reseÃ±a" (
 );
 
 
-ALTER TABLE public."reseÃ±a" OWNER TO postgres;
+ALTER TABLE public."reseña" OWNER TO postgres;
 
 --
--- TOC entry 230 (class 1259 OID 16432)
+-- TOC entry 230 (class 1259 OID 16527)
 -- Name: reseÃ±a_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -408,11 +409,11 @@ ALTER SEQUENCE public."reseÃ±a_id_seq" OWNER TO postgres;
 -- Name: reseÃ±a_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public."reseÃ±a_id_seq" OWNED BY public."reseÃ±a".id;
+ALTER SEQUENCE public."reseÃ±a_id_seq" OWNED BY public."reseña".id;
 
 
 --
--- TOC entry 231 (class 1259 OID 16433)
+-- TOC entry 231 (class 1259 OID 16528)
 -- Name: tipo; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -425,7 +426,7 @@ CREATE TABLE public.tipo (
 ALTER TABLE public.tipo OWNER TO postgres;
 
 --
--- TOC entry 232 (class 1259 OID 16436)
+-- TOC entry 232 (class 1259 OID 16531)
 -- Name: tipo_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -448,24 +449,9 @@ ALTER SEQUENCE public.tipo_id_seq OWNER TO postgres;
 
 ALTER SEQUENCE public.tipo_id_seq OWNED BY public.tipo.id;
 
-CREATE TABLE IF NOT EXISTS detalle_pedido (
-    id_detalle_pedido SERIAL PRIMARY KEY,
-    id_pedido INT NOT NULL,
-    id_local INT NOT NULL,
-    id_usuario INT NOT NULL,
-    id_producto INT NOT NULL,
-    FOREIGN KEY (id_pedido) REFERENCES pedidos (id_pedido),
-    FOREIGN KEY (id_local) REFERENCES locales (id_local),
-    FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario),
-    FOREIGN KEY (id_producto) REFERENCES productos (id_producto)
-);
 
-INSERT INTO detalle_pedido (id_pedido, id_local, id_usuario, id_producto) VALUES 
-(1, 1, 1, 1), 
-(2, 2, 1, 2), 
-(3, 3, 1, 3);
 --
--- TOC entry 233 (class 1259 OID 16437)
+-- TOC entry 233 (class 1259 OID 16532)
 -- Name: usuario; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -483,7 +469,7 @@ CREATE TABLE public.usuario (
 ALTER TABLE public.usuario OWNER TO postgres;
 
 --
--- TOC entry 234 (class 1259 OID 16440)
+-- TOC entry 234 (class 1259 OID 16535)
 -- Name: usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -508,7 +494,7 @@ ALTER SEQUENCE public.usuario_id_seq OWNED BY public.usuario.id;
 
 
 --
--- TOC entry 4686 (class 2604 OID 16443)
+-- TOC entry 4684 (class 2604 OID 16536)
 -- Name: Recomendados id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -516,7 +502,7 @@ ALTER TABLE ONLY public."Recomendados" ALTER COLUMN id SET DEFAULT nextval('publ
 
 
 --
--- TOC entry 4684 (class 2604 OID 16441)
+-- TOC entry 4685 (class 2604 OID 16537)
 -- Name: carrito id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -524,15 +510,15 @@ ALTER TABLE ONLY public.carrito ALTER COLUMN id SET DEFAULT nextval('public.carr
 
 
 --
--- TOC entry 4694 (class 2604 OID 16616)
--- Name: detallePedido id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 4694 (class 2604 OID 16705)
+-- Name: detallePedido ID; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."detallePedido" ALTER COLUMN id SET DEFAULT nextval('public."detallePedido_id_seq"'::regclass);
+ALTER TABLE ONLY public."detallePedido" ALTER COLUMN "ID" SET DEFAULT nextval('public."detallePedido_ID_seq"'::regclass);
 
 
 --
--- TOC entry 4685 (class 2604 OID 16442)
+-- TOC entry 4686 (class 2604 OID 16539)
 -- Name: direccion id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -540,7 +526,7 @@ ALTER TABLE ONLY public.direccion ALTER COLUMN id SET DEFAULT nextval('public.di
 
 
 --
--- TOC entry 4687 (class 2604 OID 16444)
+-- TOC entry 4687 (class 2604 OID 16540)
 -- Name: local id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -548,7 +534,7 @@ ALTER TABLE ONLY public.local ALTER COLUMN id SET DEFAULT nextval('public.local_
 
 
 --
--- TOC entry 4688 (class 2604 OID 16445)
+-- TOC entry 4688 (class 2604 OID 16541)
 -- Name: metodosdepago id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -556,7 +542,7 @@ ALTER TABLE ONLY public.metodosdepago ALTER COLUMN id SET DEFAULT nextval('publi
 
 
 --
--- TOC entry 4689 (class 2604 OID 16446)
+-- TOC entry 4689 (class 2604 OID 16542)
 -- Name: pedido id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -564,7 +550,7 @@ ALTER TABLE ONLY public.pedido ALTER COLUMN id SET DEFAULT nextval('public.pedid
 
 
 --
--- TOC entry 4690 (class 2604 OID 16447)
+-- TOC entry 4690 (class 2604 OID 16543)
 -- Name: productos id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -572,15 +558,15 @@ ALTER TABLE ONLY public.productos ALTER COLUMN id SET DEFAULT nextval('public.pr
 
 
 --
--- TOC entry 4691 (class 2604 OID 16448)
--- Name: reseÃ±a id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 4691 (class 2604 OID 16544)
+-- Name: reseña id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."reseÃ±a" ALTER COLUMN id SET DEFAULT nextval('public."reseÃ±a_id_seq"'::regclass);
+ALTER TABLE ONLY public."reseña" ALTER COLUMN id SET DEFAULT nextval('public."reseÃ±a_id_seq"'::regclass);
 
 
 --
--- TOC entry 4692 (class 2604 OID 16449)
+-- TOC entry 4692 (class 2604 OID 16545)
 -- Name: tipo id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -588,7 +574,7 @@ ALTER TABLE ONLY public.tipo ALTER COLUMN id SET DEFAULT nextval('public.tipo_id
 
 
 --
--- TOC entry 4693 (class 2604 OID 16450)
+-- TOC entry 4693 (class 2604 OID 16546)
 -- Name: usuario id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -596,23 +582,23 @@ ALTER TABLE ONLY public.usuario ALTER COLUMN id SET DEFAULT nextval('public.usua
 
 
 --
--- TOC entry 4891 (class 0 OID 16407)
--- Dependencies: 219
+-- TOC entry 4887 (class 0 OID 16488)
+-- Dependencies: 215
 -- Data for Name: Recomendados; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 
 
 --
--- TOC entry 4887 (class 0 OID 16399)
--- Dependencies: 215
+-- TOC entry 4888 (class 0 OID 16491)
+-- Dependencies: 216
 -- Data for Name: carrito; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 
 
 --
--- TOC entry 4908 (class 0 OID 16613)
+-- TOC entry 4908 (class 0 OID 16702)
 -- Dependencies: 236
 -- Data for Name: detallePedido; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -620,42 +606,42 @@ ALTER TABLE ONLY public.usuario ALTER COLUMN id SET DEFAULT nextval('public.usua
 
 
 --
--- TOC entry 4889 (class 0 OID 16403)
--- Dependencies: 217
+-- TOC entry 4890 (class 0 OID 16501)
+-- Dependencies: 218
 -- Data for Name: direccion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.direccion VALUES (1, 'Vera 797
+INSERT INTO public.direccion (id, ubicacion, idusuario, idtipo, referencia) VALUES (1, 'Vera 797
 ', 1, 2, 'Alado de kiosco rojo y casa de porton verde
 ');
 
 
 --
--- TOC entry 4893 (class 0 OID 16411)
+-- TOC entry 4893 (class 0 OID 16506)
 -- Dependencies: 221
 -- Data for Name: local; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.local VALUES (2, 'Catamarca', 'Billinghurst 372', 'https://cdn-3.expansion.mx/dims4/default/24e9350/2147483647/strip/true/crop/1254x836+0+0/resize/1200x800!/format/webp/quality/60/?url=https%3A%2F%2Fcdn-3.expansion.mx%2Ff0%2F63%2F1781223d4c0d91095e17059bf0ff%2Fistock-1011173366.jpg', 4);
-INSERT INTO public.local VALUES (3, 'Savona', 'Anchorena 700', 'https://insidemdp.com.ar/wp-content/uploads/2022/12/panaderias-en-mar-del-plata.jpeg', 5);
-INSERT INTO public.local VALUES (4, 'PanaderÃ­a El Sol', 'Medrano 575', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAsducQ53DgnHWpiRsVcx2HFBoLCAciOgDKQ&s', 3);
-INSERT INTO public.local VALUES (5, 'Horno de Oro', 'San Martin 679', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg1VAptewBOTJRwSKxlfu32nF1dp5IJuqTuw&s', 4);
-INSERT INTO public.local VALUES (6, 'El RincÃ³n del Panadero', 'Acoyte 2300', 'https://images.adsttc.com/media/images/630e/cc5c/ae0c/1d14/7231/ff36/newsletter/panaderia-pianistas-zooco-estudio_10.jpg?1661914226', 5);
-INSERT INTO public.local VALUES (7, 'Dulce Hogaza', 'Estado de Israel 3200', 'https://media-front.elmostrador.cl/2019/04/Panaderia_variada.jpg', 4);
-INSERT INTO public.local VALUES (8, 'Pan y Magia', 'Directorio 3736', 'https://d100mj7v0l85u5.cloudfront.net/s3fs-public/2022-09/las-lecciones-de-las-panaderias-y-reposterias-.jpg', 5);
-INSERT INTO public.local VALUES (9, 'Delicias de Trigo', 'Scalabrini Ortiz 954', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI-1jC9AcbA0CmAXm4dykLKWzSQaqVcsoVkg&s', 4);
-INSERT INTO public.local VALUES (10, 'Meta', 'Congreso 372', 'https://conelmorrofino.com/wp-content/uploads/2018/10/Las-mejores-panaderias-del-mundo-Portada.jpg', 5);
-INSERT INTO public.local VALUES (11, 'London', 'Los Incas 1700', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRED4zyYURs_tjsLS30LWh22iKTe2jvr_qJkg&s', 3);
-INSERT INTO public.local VALUES (12, 'Boston', 'Dorrego 789', 'https://ig.com.ar/wp-content/uploads/2022/08/hombre-trabajando-fabrica-pan_23-2148983505.webp', 3);
-INSERT INTO public.local VALUES (13, 'Jala', 'Diaz Velez 1500', 'https://sevillasecreta.co/wp-content/uploads/2020/10/shutterstock_1544878508-1-1024x684.jpg', 4);
-INSERT INTO public.local VALUES (14, 'Merlin', 'Honorio 534', 'https://www.clavesdigital.com.ar/vistas/fotos_noticias/9275-asi-es-el-panorama-actual-de-las-panaderias-en-colombia.jpg', 5);
-INSERT INTO public.local VALUES (15, 'Le pain', 'Rivadavia 444', 'https://portales.vilbo.com/files/uploads/images/articulos/2020/panaderias/panem-mostrador.jpg', 5);
-INSERT INTO public.local VALUES (16, 'Pannitti', 'Yatay 535', 'https://i0.wp.com/foodandpleasure.com/wp-content/uploads/2021/03/panaderias-colonia-roma-patisseriedominique.jpg?resize=1024%2C755&ssl=1', 5);
-INSERT INTO public.local VALUES (17, 'Madre', 'Vera 600', 'https://www.cucinare.tv/wp-content/uploads/2020/01/Gontran-2-1024x579.jpg', 5);
+INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (2, 'Catamarca', 'Billinghurst 372', 'https://cdn-3.expansion.mx/dims4/default/24e9350/2147483647/strip/true/crop/1254x836+0+0/resize/1200x800!/format/webp/quality/60/?url=https%3A%2F%2Fcdn-3.expansion.mx%2Ff0%2F63%2F1781223d4c0d91095e17059bf0ff%2Fistock-1011173366.jpg', 4);
+INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (3, 'Savona', 'Anchorena 700', 'https://insidemdp.com.ar/wp-content/uploads/2022/12/panaderias-en-mar-del-plata.jpeg', 5);
+INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (4, 'PanaderÃ­a El Sol', 'Medrano 575', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAsducQ53DgnHWpiRsVcx2HFBoLCAciOgDKQ&s', 3);
+INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (5, 'Horno de Oro', 'San Martin 679', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg1VAptewBOTJRwSKxlfu32nF1dp5IJuqTuw&s', 4);
+INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (6, 'El RincÃ³n del Panadero', 'Acoyte 2300', 'https://images.adsttc.com/media/images/630e/cc5c/ae0c/1d14/7231/ff36/newsletter/panaderia-pianistas-zooco-estudio_10.jpg?1661914226', 5);
+INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (7, 'Dulce Hogaza', 'Estado de Israel 3200', 'https://media-front.elmostrador.cl/2019/04/Panaderia_variada.jpg', 4);
+INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (8, 'Pan y Magia', 'Directorio 3736', 'https://d100mj7v0l85u5.cloudfront.net/s3fs-public/2022-09/las-lecciones-de-las-panaderias-y-reposterias-.jpg', 5);
+INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (9, 'Delicias de Trigo', 'Scalabrini Ortiz 954', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI-1jC9AcbA0CmAXm4dykLKWzSQaqVcsoVkg&s', 4);
+INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (10, 'Meta', 'Congreso 372', 'https://conelmorrofino.com/wp-content/uploads/2018/10/Las-mejores-panaderias-del-mundo-Portada.jpg', 5);
+INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (11, 'London', 'Los Incas 1700', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRED4zyYURs_tjsLS30LWh22iKTe2jvr_qJkg&s', 3);
+INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (12, 'Boston', 'Dorrego 789', 'https://ig.com.ar/wp-content/uploads/2022/08/hombre-trabajando-fabrica-pan_23-2148983505.webp', 3);
+INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (13, 'Jala', 'Diaz Velez 1500', 'https://sevillasecreta.co/wp-content/uploads/2020/10/shutterstock_1544878508-1-1024x684.jpg', 4);
+INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (14, 'Merlin', 'Honorio 534', 'https://www.clavesdigital.com.ar/vistas/fotos_noticias/9275-asi-es-el-panorama-actual-de-las-panaderias-en-colombia.jpg', 5);
+INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (15, 'Le pain', 'Rivadavia 444', 'https://portales.vilbo.com/files/uploads/images/articulos/2020/panaderias/panem-mostrador.jpg', 5);
+INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (16, 'Pannitti', 'Yatay 535', 'https://i0.wp.com/foodandpleasure.com/wp-content/uploads/2021/03/panaderias-colonia-roma-patisseriedominique.jpg?resize=1024%2C755&ssl=1', 5);
+INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (17, 'Madre', 'Vera 600', 'https://www.cucinare.tv/wp-content/uploads/2020/01/Gontran-2-1024x579.jpg', 5);
 
 
 --
--- TOC entry 4895 (class 0 OID 16417)
+-- TOC entry 4895 (class 0 OID 16512)
 -- Dependencies: 223
 -- Data for Name: metodosdepago; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -663,7 +649,7 @@ INSERT INTO public.local VALUES (17, 'Madre', 'Vera 600', 'https://www.cucinare.
 
 
 --
--- TOC entry 4897 (class 0 OID 16421)
+-- TOC entry 4897 (class 0 OID 16516)
 -- Dependencies: 225
 -- Data for Name: pedido; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -671,7 +657,7 @@ INSERT INTO public.local VALUES (17, 'Madre', 'Vera 600', 'https://www.cucinare.
 
 
 --
--- TOC entry 4899 (class 0 OID 16425)
+-- TOC entry 4899 (class 0 OID 16520)
 -- Dependencies: 227
 -- Data for Name: productos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -679,33 +665,33 @@ INSERT INTO public.local VALUES (17, 'Madre', 'Vera 600', 'https://www.cucinare.
 
 
 --
--- TOC entry 4901 (class 0 OID 16429)
+-- TOC entry 4901 (class 0 OID 16524)
 -- Dependencies: 229
--- Data for Name: reseÃ±a; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: reseña; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 
 
 --
--- TOC entry 4903 (class 0 OID 16433)
+-- TOC entry 4903 (class 0 OID 16528)
 -- Dependencies: 231
 -- Data for Name: tipo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.tipo VALUES (1, 'casa');
-INSERT INTO public.tipo VALUES (2, 'Oficina
+INSERT INTO public.tipo (id, descripcion) VALUES (1, 'casa');
+INSERT INTO public.tipo (id, descripcion) VALUES (2, 'Oficina
 ');
-INSERT INTO public.tipo VALUES (3, 'Otro
+INSERT INTO public.tipo (id, descripcion) VALUES (3, 'Otro
 ');
 
 
 --
--- TOC entry 4905 (class 0 OID 16437)
+-- TOC entry 4905 (class 0 OID 16532)
 -- Dependencies: 233
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.usuario VALUES (1, 'Uma
+INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, "contraseÃ±a", vendedor) VALUES (1, 'Uma
 
 ', 'Got
 ', 1134562341, 'umagot@gmail.com
@@ -715,7 +701,7 @@ INSERT INTO public.usuario VALUES (1, 'Uma
 
 --
 -- TOC entry 4926 (class 0 OID 0)
--- Dependencies: 216
+-- Dependencies: 217
 -- Name: carrito_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -725,15 +711,15 @@ SELECT pg_catalog.setval('public.carrito_id_seq', 1, false);
 --
 -- TOC entry 4927 (class 0 OID 0)
 -- Dependencies: 235
--- Name: detallePedido_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: detallePedido_ID_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."detallePedido_id_seq"', 1, false);
+SELECT pg_catalog.setval('public."detallePedido_ID_seq"', 1, false);
 
 
 --
 -- TOC entry 4928 (class 0 OID 0)
--- Dependencies: 218
+-- Dependencies: 219
 -- Name: direccion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -813,7 +799,7 @@ SELECT pg_catalog.setval('public.usuario_id_seq', 1, true);
 
 
 --
--- TOC entry 4696 (class 2606 OID 16452)
+-- TOC entry 4698 (class 2606 OID 16548)
 -- Name: carrito carrito_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -822,16 +808,16 @@ ALTER TABLE ONLY public.carrito
 
 
 --
--- TOC entry 4717 (class 2606 OID 16620)
+-- TOC entry 4717 (class 2606 OID 16709)
 -- Name: detallePedido detallePedido_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public."detallePedido"
-    ADD CONSTRAINT "detallePedido_pkey" PRIMARY KEY (idusuario);
+    ADD CONSTRAINT "detallePedido_pkey" PRIMARY KEY ("ID");
 
 
 --
--- TOC entry 4698 (class 2606 OID 16454)
+-- TOC entry 4700 (class 2606 OID 16552)
 -- Name: direccion direccion_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -840,7 +826,7 @@ ALTER TABLE ONLY public.direccion
 
 
 --
--- TOC entry 4700 (class 2606 OID 16456)
+-- TOC entry 4696 (class 2606 OID 16554)
 -- Name: Recomendados favoritos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -849,7 +835,7 @@ ALTER TABLE ONLY public."Recomendados"
 
 
 --
--- TOC entry 4702 (class 2606 OID 16458)
+-- TOC entry 4702 (class 2606 OID 16556)
 -- Name: local local_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -858,7 +844,7 @@ ALTER TABLE ONLY public.local
 
 
 --
--- TOC entry 4704 (class 2606 OID 16460)
+-- TOC entry 4704 (class 2606 OID 16558)
 -- Name: metodosdepago metodosdepago_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -867,7 +853,7 @@ ALTER TABLE ONLY public.metodosdepago
 
 
 --
--- TOC entry 4706 (class 2606 OID 16462)
+-- TOC entry 4706 (class 2606 OID 16560)
 -- Name: pedido pedido_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -876,7 +862,7 @@ ALTER TABLE ONLY public.pedido
 
 
 --
--- TOC entry 4708 (class 2606 OID 16464)
+-- TOC entry 4708 (class 2606 OID 16562)
 -- Name: productos productos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -885,16 +871,16 @@ ALTER TABLE ONLY public.productos
 
 
 --
--- TOC entry 4711 (class 2606 OID 16466)
--- Name: reseÃ±a reseÃ±a_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 4711 (class 2606 OID 16564)
+-- Name: reseña reseÃ±a_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."reseÃ±a"
+ALTER TABLE ONLY public."reseña"
     ADD CONSTRAINT "reseÃ±a_pkey" PRIMARY KEY (id);
 
 
 --
--- TOC entry 4713 (class 2606 OID 16468)
+-- TOC entry 4713 (class 2606 OID 16566)
 -- Name: tipo tipo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -903,7 +889,7 @@ ALTER TABLE ONLY public.tipo
 
 
 --
--- TOC entry 4715 (class 2606 OID 16470)
+-- TOC entry 4715 (class 2606 OID 16568)
 -- Name: usuario usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -912,15 +898,15 @@ ALTER TABLE ONLY public.usuario
 
 
 --
--- TOC entry 4709 (class 1259 OID 16471)
+-- TOC entry 4709 (class 1259 OID 16569)
 -- Name: fki_idlocal; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX fki_idlocal ON public."reseÃ±a" USING btree (idlocal);
+CREATE INDEX fki_idlocal ON public."reseña" USING btree (idlocal);
 
 
 --
--- TOC entry 4718 (class 2606 OID 16472)
+-- TOC entry 4722 (class 2606 OID 16570)
 -- Name: carrito carrito_idpaquete_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -929,7 +915,7 @@ ALTER TABLE ONLY public.carrito
 
 
 --
--- TOC entry 4719 (class 2606 OID 16477)
+-- TOC entry 4723 (class 2606 OID 16575)
 -- Name: carrito carrito_idpaquete_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -938,7 +924,7 @@ ALTER TABLE ONLY public.carrito
 
 
 --
--- TOC entry 4720 (class 2606 OID 16482)
+-- TOC entry 4724 (class 2606 OID 16580)
 -- Name: carrito carrito_idusuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -947,7 +933,7 @@ ALTER TABLE ONLY public.carrito
 
 
 --
--- TOC entry 4721 (class 2606 OID 16487)
+-- TOC entry 4725 (class 2606 OID 16585)
 -- Name: carrito carrito_idusuario_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -956,7 +942,7 @@ ALTER TABLE ONLY public.carrito
 
 
 --
--- TOC entry 4722 (class 2606 OID 16492)
+-- TOC entry 4726 (class 2606 OID 16590)
 -- Name: direccion direccion_idtipo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -965,7 +951,7 @@ ALTER TABLE ONLY public.direccion
 
 
 --
--- TOC entry 4723 (class 2606 OID 16497)
+-- TOC entry 4727 (class 2606 OID 16595)
 -- Name: direccion direccion_idtipo_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -974,7 +960,7 @@ ALTER TABLE ONLY public.direccion
 
 
 --
--- TOC entry 4724 (class 2606 OID 16502)
+-- TOC entry 4728 (class 2606 OID 16600)
 -- Name: direccion direccion_idusuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -983,7 +969,7 @@ ALTER TABLE ONLY public.direccion
 
 
 --
--- TOC entry 4725 (class 2606 OID 16507)
+-- TOC entry 4729 (class 2606 OID 16605)
 -- Name: direccion direccion_idusuario_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -992,7 +978,7 @@ ALTER TABLE ONLY public.direccion
 
 
 --
--- TOC entry 4726 (class 2606 OID 16512)
+-- TOC entry 4718 (class 2606 OID 16610)
 -- Name: Recomendados favoritos_idlocal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1001,7 +987,7 @@ ALTER TABLE ONLY public."Recomendados"
 
 
 --
--- TOC entry 4727 (class 2606 OID 16517)
+-- TOC entry 4719 (class 2606 OID 16615)
 -- Name: Recomendados favoritos_idlocal_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1010,7 +996,7 @@ ALTER TABLE ONLY public."Recomendados"
 
 
 --
--- TOC entry 4728 (class 2606 OID 16522)
+-- TOC entry 4720 (class 2606 OID 16620)
 -- Name: Recomendados favoritos_idusuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1019,7 +1005,7 @@ ALTER TABLE ONLY public."Recomendados"
 
 
 --
--- TOC entry 4729 (class 2606 OID 16527)
+-- TOC entry 4721 (class 2606 OID 16625)
 -- Name: Recomendados favoritos_idusuario_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1028,16 +1014,16 @@ ALTER TABLE ONLY public."Recomendados"
 
 
 --
--- TOC entry 4739 (class 2606 OID 16532)
--- Name: reseÃ±a idlocal; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 4739 (class 2606 OID 16630)
+-- Name: reseña idlocal; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."reseÃ±a"
+ALTER TABLE ONLY public."reseña"
     ADD CONSTRAINT idlocal FOREIGN KEY (idlocal) REFERENCES public.local(id) NOT VALID;
 
 
 --
--- TOC entry 4730 (class 2606 OID 16547)
+-- TOC entry 4730 (class 2606 OID 16635)
 -- Name: metodosdepago metodosdepago_idusuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1046,7 +1032,7 @@ ALTER TABLE ONLY public.metodosdepago
 
 
 --
--- TOC entry 4731 (class 2606 OID 16552)
+-- TOC entry 4731 (class 2606 OID 16640)
 -- Name: pedido pedido_idlocal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1055,7 +1041,7 @@ ALTER TABLE ONLY public.pedido
 
 
 --
--- TOC entry 4732 (class 2606 OID 16557)
+-- TOC entry 4732 (class 2606 OID 16645)
 -- Name: pedido pedido_idlocal_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1064,7 +1050,7 @@ ALTER TABLE ONLY public.pedido
 
 
 --
--- TOC entry 4733 (class 2606 OID 16562)
+-- TOC entry 4733 (class 2606 OID 16650)
 -- Name: pedido pedido_idmetododepago_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1073,7 +1059,7 @@ ALTER TABLE ONLY public.pedido
 
 
 --
--- TOC entry 4734 (class 2606 OID 16567)
+-- TOC entry 4734 (class 2606 OID 16655)
 -- Name: pedido pedido_idmetododepago_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1082,7 +1068,7 @@ ALTER TABLE ONLY public.pedido
 
 
 --
--- TOC entry 4735 (class 2606 OID 16572)
+-- TOC entry 4735 (class 2606 OID 16660)
 -- Name: pedido pedido_idusuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1091,7 +1077,7 @@ ALTER TABLE ONLY public.pedido
 
 
 --
--- TOC entry 4736 (class 2606 OID 16577)
+-- TOC entry 4736 (class 2606 OID 16665)
 -- Name: pedido pedido_idusuario_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1100,7 +1086,7 @@ ALTER TABLE ONLY public.pedido
 
 
 --
--- TOC entry 4737 (class 2606 OID 16582)
+-- TOC entry 4737 (class 2606 OID 16670)
 -- Name: productos productos_idlocal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1109,7 +1095,7 @@ ALTER TABLE ONLY public.productos
 
 
 --
--- TOC entry 4738 (class 2606 OID 16587)
+-- TOC entry 4738 (class 2606 OID 16675)
 -- Name: productos productos_idlocal_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1118,42 +1104,42 @@ ALTER TABLE ONLY public.productos
 
 
 --
--- TOC entry 4740 (class 2606 OID 16592)
--- Name: reseÃ±a reseÃ±a_idlocal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 4740 (class 2606 OID 16680)
+-- Name: reseña reseÃ±a_idlocal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."reseÃ±a"
+ALTER TABLE ONLY public."reseña"
     ADD CONSTRAINT "reseÃ±a_idlocal_fkey" FOREIGN KEY (idlocal) REFERENCES public.local(id) NOT VALID;
 
 
 --
--- TOC entry 4741 (class 2606 OID 16597)
--- Name: reseÃ±a reseÃ±a_idlocal_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 4741 (class 2606 OID 16685)
+-- Name: reseña reseÃ±a_idlocal_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."reseÃ±a"
+ALTER TABLE ONLY public."reseña"
     ADD CONSTRAINT "reseÃ±a_idlocal_fkey1" FOREIGN KEY (idlocal) REFERENCES public.local(id) NOT VALID;
 
 
 --
--- TOC entry 4742 (class 2606 OID 16602)
--- Name: reseÃ±a reseÃ±a_idusuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 4742 (class 2606 OID 16690)
+-- Name: reseña reseÃ±a_idusuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."reseÃ±a"
+ALTER TABLE ONLY public."reseña"
     ADD CONSTRAINT "reseÃ±a_idusuario_fkey" FOREIGN KEY (idusuario) REFERENCES public.usuario(id) NOT VALID;
 
 
 --
--- TOC entry 4743 (class 2606 OID 16607)
--- Name: reseÃ±a reseÃ±a_idusuario_fkey2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 4743 (class 2606 OID 16695)
+-- Name: reseña reseÃ±a_idusuario_fkey2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."reseÃ±a"
+ALTER TABLE ONLY public."reseña"
     ADD CONSTRAINT "reseÃ±a_idusuario_fkey2" FOREIGN KEY (idusuario) REFERENCES public.usuario(id) NOT VALID;
 
 
--- Completed on 2024-06-25 08:03:02
+-- Completed on 2024-07-01 08:09:06
 
 --
 -- PostgreSQL database dump complete
