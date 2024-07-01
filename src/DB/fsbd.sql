@@ -5,7 +5,7 @@
 -- Dumped from database version 16.2
 -- Dumped by pg_dump version 16.0
 
--- Started on 2024-07-01 08:09:06
+-- Started on 2024-07-01 08:46:44
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -587,6 +587,11 @@ ALTER TABLE ONLY public.usuario ALTER COLUMN id SET DEFAULT nextval('public.usua
 -- Data for Name: Recomendados; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO public."Recomendados" VALUES (5, 1, 2);
+INSERT INTO public."Recomendados" VALUES (4, 1, 3);
+INSERT INTO public."Recomendados" VALUES (3, 1, 10);
+INSERT INTO public."Recomendados" VALUES (2, 1, 14);
+INSERT INTO public."Recomendados" VALUES (1, 1, 7);
 
 
 --
@@ -611,7 +616,7 @@ ALTER TABLE ONLY public.usuario ALTER COLUMN id SET DEFAULT nextval('public.usua
 -- Data for Name: direccion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.direccion (id, ubicacion, idusuario, idtipo, referencia) VALUES (1, 'Vera 797
+INSERT INTO public.direccion VALUES (1, 'Vera 797
 ', 1, 2, 'Alado de kiosco rojo y casa de porton verde
 ');
 
@@ -622,22 +627,22 @@ INSERT INTO public.direccion (id, ubicacion, idusuario, idtipo, referencia) VALU
 -- Data for Name: local; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (2, 'Catamarca', 'Billinghurst 372', 'https://cdn-3.expansion.mx/dims4/default/24e9350/2147483647/strip/true/crop/1254x836+0+0/resize/1200x800!/format/webp/quality/60/?url=https%3A%2F%2Fcdn-3.expansion.mx%2Ff0%2F63%2F1781223d4c0d91095e17059bf0ff%2Fistock-1011173366.jpg', 4);
-INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (3, 'Savona', 'Anchorena 700', 'https://insidemdp.com.ar/wp-content/uploads/2022/12/panaderias-en-mar-del-plata.jpeg', 5);
-INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (4, 'PanaderÃ­a El Sol', 'Medrano 575', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAsducQ53DgnHWpiRsVcx2HFBoLCAciOgDKQ&s', 3);
-INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (5, 'Horno de Oro', 'San Martin 679', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg1VAptewBOTJRwSKxlfu32nF1dp5IJuqTuw&s', 4);
-INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (6, 'El RincÃ³n del Panadero', 'Acoyte 2300', 'https://images.adsttc.com/media/images/630e/cc5c/ae0c/1d14/7231/ff36/newsletter/panaderia-pianistas-zooco-estudio_10.jpg?1661914226', 5);
-INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (7, 'Dulce Hogaza', 'Estado de Israel 3200', 'https://media-front.elmostrador.cl/2019/04/Panaderia_variada.jpg', 4);
-INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (8, 'Pan y Magia', 'Directorio 3736', 'https://d100mj7v0l85u5.cloudfront.net/s3fs-public/2022-09/las-lecciones-de-las-panaderias-y-reposterias-.jpg', 5);
-INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (9, 'Delicias de Trigo', 'Scalabrini Ortiz 954', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI-1jC9AcbA0CmAXm4dykLKWzSQaqVcsoVkg&s', 4);
-INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (10, 'Meta', 'Congreso 372', 'https://conelmorrofino.com/wp-content/uploads/2018/10/Las-mejores-panaderias-del-mundo-Portada.jpg', 5);
-INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (11, 'London', 'Los Incas 1700', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRED4zyYURs_tjsLS30LWh22iKTe2jvr_qJkg&s', 3);
-INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (12, 'Boston', 'Dorrego 789', 'https://ig.com.ar/wp-content/uploads/2022/08/hombre-trabajando-fabrica-pan_23-2148983505.webp', 3);
-INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (13, 'Jala', 'Diaz Velez 1500', 'https://sevillasecreta.co/wp-content/uploads/2020/10/shutterstock_1544878508-1-1024x684.jpg', 4);
-INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (14, 'Merlin', 'Honorio 534', 'https://www.clavesdigital.com.ar/vistas/fotos_noticias/9275-asi-es-el-panorama-actual-de-las-panaderias-en-colombia.jpg', 5);
-INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (15, 'Le pain', 'Rivadavia 444', 'https://portales.vilbo.com/files/uploads/images/articulos/2020/panaderias/panem-mostrador.jpg', 5);
-INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (16, 'Pannitti', 'Yatay 535', 'https://i0.wp.com/foodandpleasure.com/wp-content/uploads/2021/03/panaderias-colonia-roma-patisseriedominique.jpg?resize=1024%2C755&ssl=1', 5);
-INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (17, 'Madre', 'Vera 600', 'https://www.cucinare.tv/wp-content/uploads/2020/01/Gontran-2-1024x579.jpg', 5);
+INSERT INTO public.local VALUES (2, 'Catamarca', 'Billinghurst 372', 'https://cdn-3.expansion.mx/dims4/default/24e9350/2147483647/strip/true/crop/1254x836+0+0/resize/1200x800!/format/webp/quality/60/?url=https%3A%2F%2Fcdn-3.expansion.mx%2Ff0%2F63%2F1781223d4c0d91095e17059bf0ff%2Fistock-1011173366.jpg', 4);
+INSERT INTO public.local VALUES (3, 'Savona', 'Anchorena 700', 'https://insidemdp.com.ar/wp-content/uploads/2022/12/panaderias-en-mar-del-plata.jpeg', 5);
+INSERT INTO public.local VALUES (4, 'PanaderÃ­a El Sol', 'Medrano 575', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAsducQ53DgnHWpiRsVcx2HFBoLCAciOgDKQ&s', 3);
+INSERT INTO public.local VALUES (5, 'Horno de Oro', 'San Martin 679', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg1VAptewBOTJRwSKxlfu32nF1dp5IJuqTuw&s', 4);
+INSERT INTO public.local VALUES (6, 'El RincÃ³n del Panadero', 'Acoyte 2300', 'https://images.adsttc.com/media/images/630e/cc5c/ae0c/1d14/7231/ff36/newsletter/panaderia-pianistas-zooco-estudio_10.jpg?1661914226', 5);
+INSERT INTO public.local VALUES (7, 'Dulce Hogaza', 'Estado de Israel 3200', 'https://media-front.elmostrador.cl/2019/04/Panaderia_variada.jpg', 4);
+INSERT INTO public.local VALUES (8, 'Pan y Magia', 'Directorio 3736', 'https://d100mj7v0l85u5.cloudfront.net/s3fs-public/2022-09/las-lecciones-de-las-panaderias-y-reposterias-.jpg', 5);
+INSERT INTO public.local VALUES (9, 'Delicias de Trigo', 'Scalabrini Ortiz 954', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI-1jC9AcbA0CmAXm4dykLKWzSQaqVcsoVkg&s', 4);
+INSERT INTO public.local VALUES (10, 'Meta', 'Congreso 372', 'https://conelmorrofino.com/wp-content/uploads/2018/10/Las-mejores-panaderias-del-mundo-Portada.jpg', 5);
+INSERT INTO public.local VALUES (11, 'London', 'Los Incas 1700', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRED4zyYURs_tjsLS30LWh22iKTe2jvr_qJkg&s', 3);
+INSERT INTO public.local VALUES (12, 'Boston', 'Dorrego 789', 'https://ig.com.ar/wp-content/uploads/2022/08/hombre-trabajando-fabrica-pan_23-2148983505.webp', 3);
+INSERT INTO public.local VALUES (13, 'Jala', 'Diaz Velez 1500', 'https://sevillasecreta.co/wp-content/uploads/2020/10/shutterstock_1544878508-1-1024x684.jpg', 4);
+INSERT INTO public.local VALUES (14, 'Merlin', 'Honorio 534', 'https://www.clavesdigital.com.ar/vistas/fotos_noticias/9275-asi-es-el-panorama-actual-de-las-panaderias-en-colombia.jpg', 5);
+INSERT INTO public.local VALUES (15, 'Le pain', 'Rivadavia 444', 'https://portales.vilbo.com/files/uploads/images/articulos/2020/panaderias/panem-mostrador.jpg', 5);
+INSERT INTO public.local VALUES (16, 'Pannitti', 'Yatay 535', 'https://i0.wp.com/foodandpleasure.com/wp-content/uploads/2021/03/panaderias-colonia-roma-patisseriedominique.jpg?resize=1024%2C755&ssl=1', 5);
+INSERT INTO public.local VALUES (17, 'Madre', 'Vera 600', 'https://www.cucinare.tv/wp-content/uploads/2020/01/Gontran-2-1024x579.jpg', 5);
 
 
 --
@@ -678,10 +683,10 @@ INSERT INTO public.local (id, nombre, direccion, foto, cantestrellas) VALUES (17
 -- Data for Name: tipo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.tipo (id, descripcion) VALUES (1, 'casa');
-INSERT INTO public.tipo (id, descripcion) VALUES (2, 'Oficina
+INSERT INTO public.tipo VALUES (1, 'casa');
+INSERT INTO public.tipo VALUES (2, 'Oficina
 ');
-INSERT INTO public.tipo (id, descripcion) VALUES (3, 'Otro
+INSERT INTO public.tipo VALUES (3, 'Otro
 ');
 
 
@@ -691,7 +696,7 @@ INSERT INTO public.tipo (id, descripcion) VALUES (3, 'Otro
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, "contraseÃ±a", vendedor) VALUES (1, 'Uma
+INSERT INTO public.usuario VALUES (1, 'Uma
 
 ', 'Got
 ', 1134562341, 'umagot@gmail.com
@@ -1139,7 +1144,7 @@ ALTER TABLE ONLY public."reseña"
     ADD CONSTRAINT "reseÃ±a_idusuario_fkey2" FOREIGN KEY (idusuario) REFERENCES public.usuario(id) NOT VALID;
 
 
--- Completed on 2024-07-01 08:09:06
+-- Completed on 2024-07-01 08:46:44
 
 --
 -- PostgreSQL database dump complete
