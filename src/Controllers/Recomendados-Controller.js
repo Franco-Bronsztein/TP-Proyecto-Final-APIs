@@ -1,9 +1,9 @@
 import {Router} from "express"
-import RouterService from '../service/router-service.js'
+import RouterService from '../service/recomendados-service.js'
 
 
 const router = Router();
-const svc =  new direccionService();
+const svc =  new RouterService();
 router.get('/:idusuario', async (req, res) => {
     let respuesta;
     const idusuario = req.params.idusuario; 
