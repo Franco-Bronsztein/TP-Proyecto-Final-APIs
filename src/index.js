@@ -3,6 +3,7 @@
 
 import TiendaRouter from '../src/Controllers/tienda-Controller.js'
 import DireccionRouter from '../src/Controllers/DIrecciones-Controller.js'
+import RecomendadosRouter from 
 import express from "express"; // hacer npm i express
 import cors from "cors"; // hacer npm i cors
 const app = express();
@@ -19,7 +20,7 @@ app.use('/infoTiendas', TiendaRouter)
 
 app.use('/direccion', DireccionRouter)
 
-app.use('/recomendados', )
+app.use('/recomendados',RecomendadosRouter)
 
 
   
