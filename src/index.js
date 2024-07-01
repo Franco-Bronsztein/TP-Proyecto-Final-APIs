@@ -18,6 +18,8 @@ app.get('/', function (req, res)  {
 
 app.use('/infoTiendas', TiendaRouter)
 
+// si es 0 es panaderia si es 1 es confiteria en CONFITERIA(columna)
+
 app.use('/direccion', DireccionRouter)
 
 app.use('/recomendados',RecomendadosRouter)
