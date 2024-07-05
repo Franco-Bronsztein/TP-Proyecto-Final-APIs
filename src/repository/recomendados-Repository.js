@@ -4,7 +4,7 @@ import pkg from 'pg'
 
 const { Client, Pool } = pkg;
 
-export default class direccionRepository {
+export default class recomendadosRepository {
     getByIdAsync = async (idusuario) => {
         let returnArray = null;
         const client = new Client(DBConfig);
@@ -18,7 +18,7 @@ export default class direccionRepository {
             const result = await client.query(sql,values);
             await client.end();
             returnArray = result.rows;
-            console.log(returnArray)
+            console.log(result)
         } catch (error) {
             console.log(error);
         }

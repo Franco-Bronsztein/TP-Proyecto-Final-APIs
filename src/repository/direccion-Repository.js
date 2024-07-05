@@ -4,7 +4,7 @@ import pkg from 'pg'
 
 const { Client, Pool } = pkg;
 
-export default class recomendadosRepository {
+export default class direccionRepository {
     getByIdAsync = async (idusuario) => {
         let returnArray = null;
         const client = new Client(DBConfig);

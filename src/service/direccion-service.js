@@ -1,4 +1,4 @@
-import direccionRepository from '../repository/direccion-Respository.js'
+import direccionRepository from '../repository/direccion-Repository.js'
 
 export default class direccionService{
     getByIdAsync = async (idusuario) => {
