@@ -12,6 +12,7 @@ export default class TiendaRepository {
             await client.connect();
             const sql = 'SELECT * FROM Local';
             const result = await client.query(sql);
+            console.log(result);
             await client.end();
             returnArray = result.rows;
         } catch (error) {
