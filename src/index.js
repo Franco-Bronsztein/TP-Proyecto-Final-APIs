@@ -1,6 +1,7 @@
 // En postman se usa "localhost:3000"
 //instalar npm i pg
 
+import CarritoRouter from '../src/Controllers/Carrito-Controller.js'
 import TiendaRouter from '../src/Controllers/tienda-Controller.js'
 import DireccionRouter from '../src/Controllers/DIrecciones-Controller.js'
 import RecomendadosRouter from '../src/Controllers/Recomendados-Controller.js'
@@ -18,13 +19,11 @@ app.get('/', function (req, res)  {
 
 app.use('/infoTiendas', TiendaRouter)
 
-// si es 0 es panaderia si es 1 es confiteria en CONFITERIA(columna)
-
 app.use('/direccion', DireccionRouter)
 
 app.use('/recomendados',RecomendadosRouter)
 
-
+app.use('/carrito', CarritoRouter)
   
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
