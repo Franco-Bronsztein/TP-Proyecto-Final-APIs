@@ -8,7 +8,6 @@ export default class recomendadosRepository {
     getByIdAsync = async (idusuario) => {
         let returnArray = null;
         const client = new Client(DBConfig);
-        console.log(idusuario)
         try {
             await client.connect();
             const sql = `SELECT L.nombre, L.direccion, L.foto, L.cantestrellas 
