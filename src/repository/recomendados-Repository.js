@@ -13,7 +13,7 @@ export default class recomendadosRepository {
             const sql = `SELECT L.nombre, L.direccion, L.foto, L.cantestrellas 
             FROM local L 
             JOIN public."Recomendados" R ON L.id = R.idlocal 
-            WHERE R.idusuario = 1;`;
+            WHERE R.idusuario = $1;`;
             const values = [idusuario]
             console.log(values)
             const result = await client.query(sql,values);
