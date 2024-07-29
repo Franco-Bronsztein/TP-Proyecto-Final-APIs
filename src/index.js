@@ -5,6 +5,7 @@ import CarritoRouter from '../src/Controllers/Carrito-Controller.js'
 import TiendaRouter from '../src/Controllers/tienda-Controller.js'
 import DireccionRouter from '../src/Controllers/DIrecciones-Controller.js'
 import RecomendadosRouter from '../src/Controllers/Recomendados-Controller.js'
+import PedidoRouter from '../src/Controllers/Pedido-Controller.js'
 import express from "express"; // hacer npm i express
 import cors from "cors"; // hacer npm i cors
 const app = express();
@@ -24,6 +25,8 @@ app.use('/direccion', DireccionRouter)
 app.use('/recomendados',RecomendadosRouter)
 
 app.use('/carrito', CarritoRouter)
+
+app.use('/pedido', PedidoRouter)
   
 
 
