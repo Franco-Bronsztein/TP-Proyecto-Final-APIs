@@ -5,7 +5,7 @@
 -- Dumped from database version 16.2
 -- Dumped by pg_dump version 16.0
 
--- Started on 2024-07-10 11:53:01
+-- Started on 2024-07-29 09:41:28
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -29,7 +29,7 @@ CREATE SCHEMA public;
 ALTER SCHEMA public OWNER TO pg_database_owner;
 
 --
--- TOC entry 4918 (class 0 OID 0)
+-- TOC entry 4920 (class 0 OID 0)
 -- Dependencies: 4
 -- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: pg_database_owner
 --
@@ -87,7 +87,7 @@ CREATE SEQUENCE public.carrito_id_seq
 ALTER SEQUENCE public.carrito_id_seq OWNER TO postgres;
 
 --
--- TOC entry 4919 (class 0 OID 0)
+-- TOC entry 4921 (class 0 OID 0)
 -- Dependencies: 217
 -- Name: carrito_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -128,7 +128,7 @@ CREATE SEQUENCE public."detallePedido_ID_seq"
 ALTER SEQUENCE public."detallePedido_ID_seq" OWNER TO postgres;
 
 --
--- TOC entry 4920 (class 0 OID 0)
+-- TOC entry 4922 (class 0 OID 0)
 -- Dependencies: 219
 -- Name: detallePedido_ID_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -169,7 +169,7 @@ CREATE SEQUENCE public.direccion_id_seq
 ALTER SEQUENCE public.direccion_id_seq OWNER TO postgres;
 
 --
--- TOC entry 4921 (class 0 OID 0)
+-- TOC entry 4923 (class 0 OID 0)
 -- Dependencies: 221
 -- Name: direccion_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -194,7 +194,7 @@ CREATE SEQUENCE public.favoritos_id_seq
 ALTER SEQUENCE public.favoritos_id_seq OWNER TO postgres;
 
 --
--- TOC entry 4922 (class 0 OID 0)
+-- TOC entry 4924 (class 0 OID 0)
 -- Dependencies: 222
 -- Name: favoritos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -236,7 +236,7 @@ CREATE SEQUENCE public.local_id_seq
 ALTER SEQUENCE public.local_id_seq OWNER TO postgres;
 
 --
--- TOC entry 4923 (class 0 OID 0)
+-- TOC entry 4925 (class 0 OID 0)
 -- Dependencies: 224
 -- Name: local_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -252,7 +252,11 @@ ALTER SEQUENCE public.local_id_seq OWNED BY public.local.id;
 CREATE TABLE public.metodosdepago (
     id integer NOT NULL,
     idusuario integer NOT NULL,
-    tipo character varying(100) NOT NULL
+    tipo character varying(100) NOT NULL,
+    "nombreTitularTarjeta" character varying(50),
+    "numeroTarjeta" character varying(50),
+    "CVV" integer,
+    "fechaVencimiento" date
 );
 
 
@@ -275,7 +279,7 @@ CREATE SEQUENCE public.metodosdepago_id_seq
 ALTER SEQUENCE public.metodosdepago_id_seq OWNER TO postgres;
 
 --
--- TOC entry 4924 (class 0 OID 0)
+-- TOC entry 4926 (class 0 OID 0)
 -- Dependencies: 226
 -- Name: metodosdepago_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -297,8 +301,9 @@ CREATE TABLE public.pedido (
     cant integer NOT NULL,
     fecha timestamp without time zone NOT NULL,
     precio integer NOT NULL,
-    referencia character varying(100) NOT NULL,
-    codigoventa character varying(6) NOT NULL
+    referencia character varying(100),
+    codigoventa character varying(10) NOT NULL,
+    idproducto integer
 );
 
 
@@ -321,7 +326,7 @@ CREATE SEQUENCE public.pedido_id_seq
 ALTER SEQUENCE public.pedido_id_seq OWNER TO postgres;
 
 --
--- TOC entry 4925 (class 0 OID 0)
+-- TOC entry 4927 (class 0 OID 0)
 -- Dependencies: 228
 -- Name: pedido_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -364,7 +369,7 @@ CREATE SEQUENCE public.productos_id_seq
 ALTER SEQUENCE public.productos_id_seq OWNER TO postgres;
 
 --
--- TOC entry 4926 (class 0 OID 0)
+-- TOC entry 4928 (class 0 OID 0)
 -- Dependencies: 230
 -- Name: productos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -405,7 +410,7 @@ CREATE SEQUENCE public."reseÃ±a_id_seq"
 ALTER SEQUENCE public."reseÃ±a_id_seq" OWNER TO postgres;
 
 --
--- TOC entry 4927 (class 0 OID 0)
+-- TOC entry 4929 (class 0 OID 0)
 -- Dependencies: 232
 -- Name: reseÃ±a_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -443,7 +448,7 @@ CREATE SEQUENCE public.tipo_id_seq
 ALTER SEQUENCE public.tipo_id_seq OWNER TO postgres;
 
 --
--- TOC entry 4928 (class 0 OID 0)
+-- TOC entry 4930 (class 0 OID 0)
 -- Dependencies: 234
 -- Name: tipo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -486,7 +491,7 @@ CREATE SEQUENCE public.usuario_id_seq
 ALTER SEQUENCE public.usuario_id_seq OWNER TO postgres;
 
 --
--- TOC entry 4929 (class 0 OID 0)
+-- TOC entry 4931 (class 0 OID 0)
 -- Dependencies: 236
 -- Name: usuario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -583,7 +588,7 @@ ALTER TABLE ONLY public.usuario ALTER COLUMN id SET DEFAULT nextval('public.usua
 
 
 --
--- TOC entry 4891 (class 0 OID 16399)
+-- TOC entry 4893 (class 0 OID 16399)
 -- Dependencies: 215
 -- Data for Name: Recomendados; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -596,15 +601,18 @@ INSERT INTO public."Recomendados" VALUES (1, 1, 7);
 
 
 --
--- TOC entry 4892 (class 0 OID 16402)
+-- TOC entry 4894 (class 0 OID 16402)
 -- Dependencies: 216
 -- Data for Name: carrito; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO public.carrito VALUES (1, 1, 3, false);
+INSERT INTO public.carrito VALUES (2, 2, 1, true);
+INSERT INTO public.carrito VALUES (3, 1, 2, false);
 
 
 --
--- TOC entry 4894 (class 0 OID 16406)
+-- TOC entry 4896 (class 0 OID 16406)
 -- Dependencies: 218
 -- Data for Name: detallePedido; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -612,7 +620,7 @@ INSERT INTO public."Recomendados" VALUES (1, 1, 7);
 
 
 --
--- TOC entry 4896 (class 0 OID 16410)
+-- TOC entry 4898 (class 0 OID 16410)
 -- Dependencies: 220
 -- Data for Name: direccion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -623,7 +631,7 @@ INSERT INTO public.direccion VALUES (1, 'Vera 797
 
 
 --
--- TOC entry 4899 (class 0 OID 16415)
+-- TOC entry 4901 (class 0 OID 16415)
 -- Dependencies: 223
 -- Data for Name: local; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -644,34 +652,88 @@ INSERT INTO public.local VALUES (14, 'Merlin', 'Honorio 534', 'https://www.clave
 INSERT INTO public.local VALUES (15, 'Le pain', 'Rivadavia 444', 'https://portales.vilbo.com/files/uploads/images/articulos/2020/panaderias/panem-mostrador.jpg', 5, true);
 INSERT INTO public.local VALUES (16, 'Pannitti', 'Yatay 535', 'https://i0.wp.com/foodandpleasure.com/wp-content/uploads/2021/03/panaderias-colonia-roma-patisseriedominique.jpg?resize=1024%2C755&ssl=1', 5, false);
 INSERT INTO public.local VALUES (17, 'Madre', 'Vera 600', 'https://www.cucinare.tv/wp-content/uploads/2020/01/Gontran-2-1024x579.jpg', 5, true);
+INSERT INTO public.local VALUES (1, 'UmiGot
+', 'vera 797', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.unicenter.com.ar%2Flocales%2Ftea-connection&psig=AOvVaw0Urkh4wefSXRTEYff834gX&ust=1722342654525000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCMC62sCgzIcDFQAAAAAdAAAAABAE', 4, false);
 
 
 --
--- TOC entry 4901 (class 0 OID 16421)
+-- TOC entry 4903 (class 0 OID 16421)
 -- Dependencies: 225
 -- Data for Name: metodosdepago; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO public.metodosdepago VALUES (2, 2, 'Efectivo', NULL, NULL, NULL, NULL);
+INSERT INTO public.metodosdepago VALUES (1, 1, 'Tarjeta', 'Franco Bronsztein', '8764-7632-4532-4742', 733, '2027-11-01');
 
 
 --
--- TOC entry 4903 (class 0 OID 16425)
+-- TOC entry 4905 (class 0 OID 16425)
 -- Dependencies: 227
 -- Data for Name: pedido; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO public.pedido VALUES (1, false, 1, 2, 1, 2, '2023-07-24 00:00:00', 3000, NULL, '00000000', 1);
+INSERT INTO public.pedido VALUES (2, false, 2, 1, 2, 1, '2023-08-23 00:00:00', 4000, NULL, '00000001', 2);
 
 
 --
--- TOC entry 4905 (class 0 OID 16429)
+-- TOC entry 4907 (class 0 OID 16429)
 -- Dependencies: 229
 -- Data for Name: productos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO public.productos VALUES (1, 'Paquete de Facturas', 600, 300, 'Una docena de facturas variadas', 20, 17);
+INSERT INTO public.productos VALUES (2, 'Paquete de Panes', 800, 400, 'Tres tipos diferentes de panes', 15, 17);
+INSERT INTO public.productos VALUES (3, 'Paquete de Medialunas', 500, 250, 'Una docena de medialunas', 30, 17);
+INSERT INTO public.productos VALUES (4, 'Paquete de Empanadas', 1200, 600, 'Seis empanadas variadas', 10, 2);
+INSERT INTO public.productos VALUES (5, 'Paquete de Tortas', 1500, 750, 'Tres porciones de tortas surtidas', 12, 2);
+INSERT INTO public.productos VALUES (6, 'Paquete de Muffins', 700, 350, 'Seis muffins de diferentes sabores', 25, 2);
+INSERT INTO public.productos VALUES (7, 'Paquete de Bizcochos', 500, 250, 'Una docena de bizcochos', 18, 3);
+INSERT INTO public.productos VALUES (8, 'Paquete de Masas Finas', 1000, 500, 'Un surtido de masas finas', 22, 3);
+INSERT INTO public.productos VALUES (9, 'Paquete de Galletas', 600, 300, 'Una docena de galletas variadas', 30, 3);
+INSERT INTO public.productos VALUES (10, 'Paquete de Churros', 400, 200, 'Seis churros rellenos', 20, 4);
+INSERT INTO public.productos VALUES (11, 'Paquete de Tartas', 1400, 700, 'Tres porciones de tartas surtidas', 15, 4);
+INSERT INTO public.productos VALUES (12, 'Paquete de Croissants', 550, 275, 'Una docena de croissants', 28, 4);
+INSERT INTO public.productos VALUES (13, 'Paquete de Alfajores', 750, 375, 'Seis alfajores de diferentes sabores', 20, 5);
+INSERT INTO public.productos VALUES (14, 'Paquete de Donuts', 650, 325, 'Seis donuts variadas', 25, 5);
+INSERT INTO public.productos VALUES (15, 'Paquete de Brownies', 900, 450, 'Tres brownies de chocolate', 18, 5);
+INSERT INTO public.productos VALUES (16, 'Paquete de Pastelitos', 800, 400, 'Seis pastelitos variados', 22, 6);
+INSERT INTO public.productos VALUES (17, 'Paquete de Tartas de Manzana', 1200, 600, 'Tres porciones de tarta de manzana', 15, 6);
+INSERT INTO public.productos VALUES (18, 'Paquete de Empanadillas', 1000, 500, 'Seis empanadillas de carne', 20, 6);
+INSERT INTO public.productos VALUES (19, 'Paquete de Pan Integral', 600, 300, 'Pan integral fresco', 25, 7);
+INSERT INTO public.productos VALUES (20, 'Paquete de Galletas de Avena', 500, 250, 'Una docena de galletas de avena', 30, 7);
+INSERT INTO public.productos VALUES (21, 'Paquete de Magdalenas', 800, 400, 'Seis magdalenas de diferentes sabores', 20, 7);
+INSERT INTO public.productos VALUES (22, 'Paquete de Pan Dulce', 1000, 500, 'Tres porciones de pan dulce', 15, 8);
+INSERT INTO public.productos VALUES (23, 'Paquete de Rosquillas', 700, 350, 'Una docena de rosquillas', 25, 8);
+INSERT INTO public.productos VALUES (24, 'Paquete de Tartas de Fruta', 1200, 600, 'Tres porciones de tartas de fruta', 12, 8);
+INSERT INTO public.productos VALUES (25, 'Paquete de Eclairs', 900, 450, 'Seis eclairs de chocolate', 20, 9);
+INSERT INTO public.productos VALUES (26, 'Paquete de Pasteles', 800, 400, 'Tres porciones de pasteles surtidos', 18, 9);
+INSERT INTO public.productos VALUES (27, 'Paquete de Mini Tarts', 700, 350, 'Seis mini tarts variadas', 22, 9);
+INSERT INTO public.productos VALUES (28, 'Paquete de Pan de Centeno', 600, 300, 'Pan de centeno fresco', 30, 10);
+INSERT INTO public.productos VALUES (29, 'Paquete de Pan Francés', 500, 250, 'Tres barras de pan francés', 20, 10);
+INSERT INTO public.productos VALUES (30, 'Paquete de Empanadas de Pollo', 1000, 500, 'Seis empanadas de pollo', 25, 10);
+INSERT INTO public.productos VALUES (31, 'Paquete de Galletas de Chocolate', 800, 400, 'Una docena de galletas de chocolate', 22, 11);
+INSERT INTO public.productos VALUES (32, 'Paquete de Brownies de Nuez', 1200, 600, 'Tres brownies de nuez', 15, 11);
+INSERT INTO public.productos VALUES (33, 'Paquete de Pan de Campo', 900, 450, 'Tres porciones de pan de campo', 18, 11);
+INSERT INTO public.productos VALUES (34, 'Paquete de Churros Rellenos', 800, 400, 'Seis churros rellenos de dulce de leche', 20, 12);
+INSERT INTO public.productos VALUES (35, 'Paquete de Masas Surtidas', 1000, 500, 'Un surtido de masas dulces', 25, 12);
+INSERT INTO public.productos VALUES (36, 'Paquete de Croissants de Mantequilla', 1200, 600, 'Una docena de croissants de mantequilla', 28, 12);
+INSERT INTO public.productos VALUES (37, 'Paquete de Panecillos', 700, 350, 'Seis panecillos variados', 22, 13);
+INSERT INTO public.productos VALUES (38, 'Paquete de Tostadas', 500, 250, 'Una docena de tostadas', 30, 13);
+INSERT INTO public.productos VALUES (39, 'Paquete de Muffins de Arándanos', 900, 450, 'Seis muffins de arándanos', 20, 13);
+INSERT INTO public.productos VALUES (40, 'Paquete de Empanadas Vegetarianas', 1200, 600, 'Seis empanadas vegetarianas', 15, 14);
+INSERT INTO public.productos VALUES (41, 'Paquete de Bizcochuelos', 800, 400, 'Tres porciones de bizcochuelos', 18, 14);
+INSERT INTO public.productos VALUES (42, 'Paquete de Galletas de Mantequilla', 700, 350, 'Una docena de galletas de mantequilla', 25, 14);
+INSERT INTO public.productos VALUES (43, 'Paquete de Tartaletas', 1000, 500, 'Seis tartaletas de frutas', 22, 15);
+INSERT INTO public.productos VALUES (44, 'Paquete de Pan de Queso', 900, 450, 'Tres porciones de pan de queso', 18, 15);
+INSERT INTO public.productos VALUES (45, 'Paquete de Roscas de Pascua', 1200, 600, 'Tres porciones de roscas de Pascua', 15, 15);
+INSERT INTO public.productos VALUES (46, 'Paquete de Magdalenas de Naranja', 800, 400, 'Seis magdalenas de naranja', 20, 16);
+INSERT INTO public.productos VALUES (47, 'Paquete de Bizcochos de Limón', 1000, 500, 'Tres porciones de bizcochos de limón', 25, 16);
+INSERT INTO public.productos VALUES (48, 'Paquete de Pan Dulce de Navidad', 1500, 750, 'Tres porciones de pan dulce de Navidad', 12, 16);
 
 
 --
--- TOC entry 4907 (class 0 OID 16433)
+-- TOC entry 4909 (class 0 OID 16433)
 -- Dependencies: 231
 -- Data for Name: reseña; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -679,7 +741,7 @@ INSERT INTO public.local VALUES (17, 'Madre', 'Vera 600', 'https://www.cucinare.
 
 
 --
--- TOC entry 4909 (class 0 OID 16437)
+-- TOC entry 4911 (class 0 OID 16437)
 -- Dependencies: 233
 -- Data for Name: tipo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -692,7 +754,7 @@ INSERT INTO public.tipo VALUES (3, 'Otro
 
 
 --
--- TOC entry 4911 (class 0 OID 16441)
+-- TOC entry 4913 (class 0 OID 16441)
 -- Dependencies: 235
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -703,10 +765,13 @@ INSERT INTO public.usuario VALUES (1, 'Uma
 ', 1134562341, 'umagot@gmail.com
 ', 'Uma1234
 ', false);
+INSERT INTO public.usuario VALUES (2, 'Franco
+', 'Bronsztein
+', 1126037372, 'francobronsztein@gmail.com', 'Franco1234', false);
 
 
 --
--- TOC entry 4930 (class 0 OID 0)
+-- TOC entry 4932 (class 0 OID 0)
 -- Dependencies: 217
 -- Name: carrito_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -715,7 +780,7 @@ SELECT pg_catalog.setval('public.carrito_id_seq', 1, false);
 
 
 --
--- TOC entry 4931 (class 0 OID 0)
+-- TOC entry 4933 (class 0 OID 0)
 -- Dependencies: 219
 -- Name: detallePedido_ID_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -724,7 +789,7 @@ SELECT pg_catalog.setval('public."detallePedido_ID_seq"', 1, false);
 
 
 --
--- TOC entry 4932 (class 0 OID 0)
+-- TOC entry 4934 (class 0 OID 0)
 -- Dependencies: 221
 -- Name: direccion_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -733,7 +798,7 @@ SELECT pg_catalog.setval('public.direccion_id_seq', 1, false);
 
 
 --
--- TOC entry 4933 (class 0 OID 0)
+-- TOC entry 4935 (class 0 OID 0)
 -- Dependencies: 222
 -- Name: favoritos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -742,7 +807,7 @@ SELECT pg_catalog.setval('public.favoritos_id_seq', 1, false);
 
 
 --
--- TOC entry 4934 (class 0 OID 0)
+-- TOC entry 4936 (class 0 OID 0)
 -- Dependencies: 224
 -- Name: local_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -751,7 +816,7 @@ SELECT pg_catalog.setval('public.local_id_seq', 17, true);
 
 
 --
--- TOC entry 4935 (class 0 OID 0)
+-- TOC entry 4937 (class 0 OID 0)
 -- Dependencies: 226
 -- Name: metodosdepago_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -760,16 +825,16 @@ SELECT pg_catalog.setval('public.metodosdepago_id_seq', 1, false);
 
 
 --
--- TOC entry 4936 (class 0 OID 0)
+-- TOC entry 4938 (class 0 OID 0)
 -- Dependencies: 228
 -- Name: pedido_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.pedido_id_seq', 1, false);
+SELECT pg_catalog.setval('public.pedido_id_seq', 1, true);
 
 
 --
--- TOC entry 4937 (class 0 OID 0)
+-- TOC entry 4939 (class 0 OID 0)
 -- Dependencies: 230
 -- Name: productos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -778,7 +843,7 @@ SELECT pg_catalog.setval('public.productos_id_seq', 1, false);
 
 
 --
--- TOC entry 4938 (class 0 OID 0)
+-- TOC entry 4940 (class 0 OID 0)
 -- Dependencies: 232
 -- Name: reseÃ±a_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -787,7 +852,7 @@ SELECT pg_catalog.setval('public."reseÃ±a_id_seq"', 1, false);
 
 
 --
--- TOC entry 4939 (class 0 OID 0)
+-- TOC entry 4941 (class 0 OID 0)
 -- Dependencies: 234
 -- Name: tipo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -796,7 +861,7 @@ SELECT pg_catalog.setval('public.tipo_id_seq', 1, false);
 
 
 --
--- TOC entry 4940 (class 0 OID 0)
+-- TOC entry 4942 (class 0 OID 0)
 -- Dependencies: 236
 -- Name: usuario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -859,7 +924,7 @@ ALTER TABLE ONLY public.metodosdepago
 
 
 --
--- TOC entry 4708 (class 2606 OID 16469)
+-- TOC entry 4709 (class 2606 OID 16469)
 -- Name: pedido pedido_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -868,7 +933,7 @@ ALTER TABLE ONLY public.pedido
 
 
 --
--- TOC entry 4710 (class 2606 OID 16471)
+-- TOC entry 4711 (class 2606 OID 16471)
 -- Name: productos productos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -877,7 +942,7 @@ ALTER TABLE ONLY public.productos
 
 
 --
--- TOC entry 4713 (class 2606 OID 16473)
+-- TOC entry 4714 (class 2606 OID 16473)
 -- Name: reseña reseÃ±a_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -886,7 +951,7 @@ ALTER TABLE ONLY public."reseña"
 
 
 --
--- TOC entry 4715 (class 2606 OID 16475)
+-- TOC entry 4716 (class 2606 OID 16475)
 -- Name: tipo tipo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -895,7 +960,7 @@ ALTER TABLE ONLY public.tipo
 
 
 --
--- TOC entry 4717 (class 2606 OID 16477)
+-- TOC entry 4718 (class 2606 OID 16477)
 -- Name: usuario usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -904,7 +969,7 @@ ALTER TABLE ONLY public.usuario
 
 
 --
--- TOC entry 4711 (class 1259 OID 16478)
+-- TOC entry 4712 (class 1259 OID 16478)
 -- Name: fki_idlocal; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -912,7 +977,15 @@ CREATE INDEX fki_idlocal ON public."reseña" USING btree (idlocal);
 
 
 --
--- TOC entry 4722 (class 2606 OID 16479)
+-- TOC entry 4707 (class 1259 OID 16634)
+-- Name: fki_idproducto; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_idproducto ON public.pedido USING btree (idproducto);
+
+
+--
+-- TOC entry 4723 (class 2606 OID 16479)
 -- Name: carrito carrito_idpaquete_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -921,7 +994,7 @@ ALTER TABLE ONLY public.carrito
 
 
 --
--- TOC entry 4723 (class 2606 OID 16484)
+-- TOC entry 4724 (class 2606 OID 16484)
 -- Name: carrito carrito_idpaquete_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -930,7 +1003,7 @@ ALTER TABLE ONLY public.carrito
 
 
 --
--- TOC entry 4724 (class 2606 OID 16489)
+-- TOC entry 4725 (class 2606 OID 16489)
 -- Name: carrito carrito_idusuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -939,7 +1012,7 @@ ALTER TABLE ONLY public.carrito
 
 
 --
--- TOC entry 4725 (class 2606 OID 16494)
+-- TOC entry 4726 (class 2606 OID 16494)
 -- Name: carrito carrito_idusuario_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -948,7 +1021,7 @@ ALTER TABLE ONLY public.carrito
 
 
 --
--- TOC entry 4726 (class 2606 OID 16499)
+-- TOC entry 4727 (class 2606 OID 16499)
 -- Name: detallePedido detallePedido_IDPedido_FK; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -957,7 +1030,7 @@ ALTER TABLE ONLY public."detallePedido"
 
 
 --
--- TOC entry 4727 (class 2606 OID 16504)
+-- TOC entry 4728 (class 2606 OID 16504)
 -- Name: detallePedido detallePedido_IDProducto_FK; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -966,7 +1039,7 @@ ALTER TABLE ONLY public."detallePedido"
 
 
 --
--- TOC entry 4728 (class 2606 OID 16509)
+-- TOC entry 4729 (class 2606 OID 16509)
 -- Name: detallePedido detallePedido_IdLocal_FK; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -975,7 +1048,7 @@ ALTER TABLE ONLY public."detallePedido"
 
 
 --
--- TOC entry 4729 (class 2606 OID 16514)
+-- TOC entry 4730 (class 2606 OID 16514)
 -- Name: detallePedido detallePedido_IdUsuario_FK; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -984,7 +1057,7 @@ ALTER TABLE ONLY public."detallePedido"
 
 
 --
--- TOC entry 4730 (class 2606 OID 16519)
+-- TOC entry 4731 (class 2606 OID 16519)
 -- Name: direccion direccion_idtipo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -993,7 +1066,7 @@ ALTER TABLE ONLY public.direccion
 
 
 --
--- TOC entry 4731 (class 2606 OID 16524)
+-- TOC entry 4732 (class 2606 OID 16524)
 -- Name: direccion direccion_idtipo_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1002,7 +1075,7 @@ ALTER TABLE ONLY public.direccion
 
 
 --
--- TOC entry 4732 (class 2606 OID 16529)
+-- TOC entry 4733 (class 2606 OID 16529)
 -- Name: direccion direccion_idusuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1011,7 +1084,7 @@ ALTER TABLE ONLY public.direccion
 
 
 --
--- TOC entry 4733 (class 2606 OID 16534)
+-- TOC entry 4734 (class 2606 OID 16534)
 -- Name: direccion direccion_idusuario_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1020,7 +1093,7 @@ ALTER TABLE ONLY public.direccion
 
 
 --
--- TOC entry 4718 (class 2606 OID 16539)
+-- TOC entry 4719 (class 2606 OID 16539)
 -- Name: Recomendados favoritos_idlocal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1029,7 +1102,7 @@ ALTER TABLE ONLY public."Recomendados"
 
 
 --
--- TOC entry 4719 (class 2606 OID 16544)
+-- TOC entry 4720 (class 2606 OID 16544)
 -- Name: Recomendados favoritos_idlocal_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1038,7 +1111,7 @@ ALTER TABLE ONLY public."Recomendados"
 
 
 --
--- TOC entry 4720 (class 2606 OID 16549)
+-- TOC entry 4721 (class 2606 OID 16549)
 -- Name: Recomendados favoritos_idusuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1047,7 +1120,7 @@ ALTER TABLE ONLY public."Recomendados"
 
 
 --
--- TOC entry 4721 (class 2606 OID 16554)
+-- TOC entry 4722 (class 2606 OID 16554)
 -- Name: Recomendados favoritos_idusuario_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1056,7 +1129,7 @@ ALTER TABLE ONLY public."Recomendados"
 
 
 --
--- TOC entry 4743 (class 2606 OID 16559)
+-- TOC entry 4745 (class 2606 OID 16559)
 -- Name: reseña idlocal; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1065,7 +1138,16 @@ ALTER TABLE ONLY public."reseña"
 
 
 --
--- TOC entry 4734 (class 2606 OID 16564)
+-- TOC entry 4736 (class 2606 OID 16629)
+-- Name: pedido idproducto; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pedido
+    ADD CONSTRAINT idproducto FOREIGN KEY (idproducto) REFERENCES public.productos(id) NOT VALID;
+
+
+--
+-- TOC entry 4735 (class 2606 OID 16564)
 -- Name: metodosdepago metodosdepago_idusuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1074,7 +1156,7 @@ ALTER TABLE ONLY public.metodosdepago
 
 
 --
--- TOC entry 4735 (class 2606 OID 16569)
+-- TOC entry 4737 (class 2606 OID 16569)
 -- Name: pedido pedido_idlocal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1083,7 +1165,7 @@ ALTER TABLE ONLY public.pedido
 
 
 --
--- TOC entry 4736 (class 2606 OID 16574)
+-- TOC entry 4738 (class 2606 OID 16574)
 -- Name: pedido pedido_idlocal_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1092,7 +1174,7 @@ ALTER TABLE ONLY public.pedido
 
 
 --
--- TOC entry 4737 (class 2606 OID 16579)
+-- TOC entry 4739 (class 2606 OID 16579)
 -- Name: pedido pedido_idmetododepago_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1101,7 +1183,7 @@ ALTER TABLE ONLY public.pedido
 
 
 --
--- TOC entry 4738 (class 2606 OID 16584)
+-- TOC entry 4740 (class 2606 OID 16584)
 -- Name: pedido pedido_idmetododepago_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1110,7 +1192,7 @@ ALTER TABLE ONLY public.pedido
 
 
 --
--- TOC entry 4739 (class 2606 OID 16589)
+-- TOC entry 4741 (class 2606 OID 16589)
 -- Name: pedido pedido_idusuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1119,7 +1201,7 @@ ALTER TABLE ONLY public.pedido
 
 
 --
--- TOC entry 4740 (class 2606 OID 16594)
+-- TOC entry 4742 (class 2606 OID 16594)
 -- Name: pedido pedido_idusuario_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1128,7 +1210,7 @@ ALTER TABLE ONLY public.pedido
 
 
 --
--- TOC entry 4741 (class 2606 OID 16599)
+-- TOC entry 4743 (class 2606 OID 16599)
 -- Name: productos productos_idlocal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1137,7 +1219,7 @@ ALTER TABLE ONLY public.productos
 
 
 --
--- TOC entry 4742 (class 2606 OID 16604)
+-- TOC entry 4744 (class 2606 OID 16604)
 -- Name: productos productos_idlocal_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1146,7 +1228,7 @@ ALTER TABLE ONLY public.productos
 
 
 --
--- TOC entry 4744 (class 2606 OID 16609)
+-- TOC entry 4746 (class 2606 OID 16609)
 -- Name: reseña reseÃ±a_idlocal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1155,7 +1237,7 @@ ALTER TABLE ONLY public."reseña"
 
 
 --
--- TOC entry 4745 (class 2606 OID 16614)
+-- TOC entry 4747 (class 2606 OID 16614)
 -- Name: reseña reseÃ±a_idlocal_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1164,7 +1246,7 @@ ALTER TABLE ONLY public."reseña"
 
 
 --
--- TOC entry 4746 (class 2606 OID 16619)
+-- TOC entry 4748 (class 2606 OID 16619)
 -- Name: reseña reseÃ±a_idusuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1173,7 +1255,7 @@ ALTER TABLE ONLY public."reseña"
 
 
 --
--- TOC entry 4747 (class 2606 OID 16624)
+-- TOC entry 4749 (class 2606 OID 16624)
 -- Name: reseña reseÃ±a_idusuario_fkey2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1181,7 +1263,7 @@ ALTER TABLE ONLY public."reseña"
     ADD CONSTRAINT "reseÃ±a_idusuario_fkey2" FOREIGN KEY (idusuario) REFERENCES public.usuario(id) NOT VALID;
 
 
--- Completed on 2024-07-10 11:53:01
+-- Completed on 2024-07-29 09:41:28
 
 --
 -- PostgreSQL database dump complete

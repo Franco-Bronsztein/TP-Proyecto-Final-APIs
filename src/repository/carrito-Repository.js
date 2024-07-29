@@ -11,13 +11,14 @@ export default class carritoRepository {
         try {
             await client.connect();
             const sql = `
-            SELECT p.nombre,p.preciooriginal,p.precioxpagina,p.descripcion,p.cantdisponible
+            SELECT p.nombre,p.preciooriginal,p.precioxpagina,p.descripcion,p.cantdisponible,l.nombre
             FROM productos p
             JOIN public."carrito" c ON p.id = c.idpaquete
             join public."usuario" u ON c.idusuario = u.id
-            WHERE p.id = c.idpaquete AND u.id = c.idusuario and u.id = $1;`;
+            join public."local" l on l.id = p.idlocal
+            WHERE p.id = c.idpaquete AND u.id = c.idusuario and u.id = $1; AND l.id = p.idlocal`;
             const values = [idusuario]
-            const result = await client.query(sql,values);
+            const result = await client.query(sql,values);  
             await client.end();
             returnArray = result.rows;
         } catch (error) {
