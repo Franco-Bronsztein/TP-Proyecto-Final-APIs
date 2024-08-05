@@ -10,7 +10,7 @@ export default class PedidoRepository {
         const client = new Client(DBConfig);
         try {
             await client.connect();
-            const sql = 'INSERT INTO public."detallePedido" (FK_IDlocal,FK_IDUsuario,FK_IDProducto,FK_IDpedido) VALUES ($idLocal,$idUsuario,$idProducto,$idPedido)';
+            const sql = 'INSERT INTO public."detallePedido" (FK_IDLocal,FK_IDUsuario,FK_IDProducto,FK_IDPedido) VALUES ($1,$2,$3,$4)';
             const values = [idProducto,idLocal,idUsuario,idPedido];
             const result = await client.query(sql, values);
             await client.end();

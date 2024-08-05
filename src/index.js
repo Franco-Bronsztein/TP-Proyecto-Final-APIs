@@ -6,7 +6,8 @@ import TiendaRouter from '../src/Controllers/tienda-Controller.js'
 import DireccionRouter from '../src/Controllers/DIrecciones-Controller.js'
 import RecomendadosRouter from '../src/Controllers/Recomendados-Controller.js'
 import PedidoRouter from '../src/Controllers/Pedido-Controller.js'
-import PerfilRouter from '../src/Controllers/Perfil-Controller.js'; // Importar el nuevo controlador
+import PerfilRouter from '../src/Controllers/Perfil-Controller.js';
+import ProductosRouter from '../src/Controllers/Productos-Controller.js'
 
 import express from "express"; // hacer npm i express
 import cors from "cors"; // hacer npm i cors
@@ -30,7 +31,9 @@ app.use('/carrito', CarritoRouter)
 
 app.use('/pedido', PedidoRouter)
 
-app.use('/infoPerfil', PerfilRouter); 
+app.use('/infoPerfil', PerfilRouter);
+
+app.use('/productos', ProductosRouter)
 
 
 app.listen(port, () => {
