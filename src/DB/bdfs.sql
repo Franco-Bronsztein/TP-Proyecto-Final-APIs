@@ -5,7 +5,7 @@
 -- Dumped from database version 16.2
 -- Dumped by pg_dump version 16.0
 
--- Started on 2024-08-05 09:34:50
+-- Started on 2024-08-05 10:32:32
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -593,11 +593,13 @@ ALTER TABLE ONLY public.usuario ALTER COLUMN id SET DEFAULT nextval('public.usua
 -- Data for Name: Recomendados; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public."Recomendados" VALUES (5, 1, 2);
-INSERT INTO public."Recomendados" VALUES (4, 1, 3);
-INSERT INTO public."Recomendados" VALUES (3, 1, 10);
-INSERT INTO public."Recomendados" VALUES (2, 1, 14);
-INSERT INTO public."Recomendados" VALUES (1, 1, 7);
+COPY public."Recomendados" (id, idusuario, idlocal) FROM stdin;
+5	1	2
+4	1	3
+3	1	10
+2	1	14
+1	1	7
+\.
 
 
 --
@@ -606,9 +608,11 @@ INSERT INTO public."Recomendados" VALUES (1, 1, 7);
 -- Data for Name: carrito; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.carrito VALUES (1, 1, 3, false);
-INSERT INTO public.carrito VALUES (2, 2, 1, true);
-INSERT INTO public.carrito VALUES (3, 1, 2, false);
+COPY public.carrito (id, idusuario, idpaquete, pedidoactivo) FROM stdin;
+1	1	3	f
+2	2	1	t
+3	1	2	f
+\.
 
 
 --
@@ -617,8 +621,10 @@ INSERT INTO public.carrito VALUES (3, 1, 2, false);
 -- Data for Name: detallePedido; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public."detallePedido" VALUES (1, 1, 1, 1, 1);
-INSERT INTO public."detallePedido" VALUES (2, 1, 1, 1, 1);
+COPY public."detallePedido" ("ID", "FK_IDLocal", "FK_IDUsuario", "FK_IDProducto", "FK_IDPedido") FROM stdin;
+1	1	1	1	1
+2	1	1	1	1
+\.
 
 
 --
@@ -627,9 +633,9 @@ INSERT INTO public."detallePedido" VALUES (2, 1, 1, 1, 1);
 -- Data for Name: direccion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.direccion VALUES (1, 'Vera 797
-', 1, 2, 'Alado de kiosco rojo y casa de porton verde
-');
+COPY public.direccion (id, ubicacion, idusuario, idtipo, referencia) FROM stdin;
+1	Vera 797\n	1	2	Alado de kiosco rojo y casa de porton verde\n
+\.
 
 
 --
@@ -638,24 +644,25 @@ INSERT INTO public.direccion VALUES (1, 'Vera 797
 -- Data for Name: local; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.local VALUES (2, 'Catamarca', 'Billinghurst 372', 'https://cdn-3.expansion.mx/dims4/default/24e9350/2147483647/strip/true/crop/1254x836+0+0/resize/1200x800!/format/webp/quality/60/?url=https%3A%2F%2Fcdn-3.expansion.mx%2Ff0%2F63%2F1781223d4c0d91095e17059bf0ff%2Fistock-1011173366.jpg', 4, true);
-INSERT INTO public.local VALUES (3, 'Savona', 'Anchorena 700', 'https://insidemdp.com.ar/wp-content/uploads/2022/12/panaderias-en-mar-del-plata.jpeg', 5, true);
-INSERT INTO public.local VALUES (4, 'PanaderÃ­a El Sol', 'Medrano 575', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAsducQ53DgnHWpiRsVcx2HFBoLCAciOgDKQ&s', 3, false);
-INSERT INTO public.local VALUES (5, 'Horno de Oro', 'San Martin 679', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg1VAptewBOTJRwSKxlfu32nF1dp5IJuqTuw&s', 4, true);
-INSERT INTO public.local VALUES (6, 'El RincÃ³n del Panadero', 'Acoyte 2300', 'https://images.adsttc.com/media/images/630e/cc5c/ae0c/1d14/7231/ff36/newsletter/panaderia-pianistas-zooco-estudio_10.jpg?1661914226', 5, false);
-INSERT INTO public.local VALUES (7, 'Dulce Hogaza', 'Estado de Israel 3200', 'https://media-front.elmostrador.cl/2019/04/Panaderia_variada.jpg', 4, false);
-INSERT INTO public.local VALUES (8, 'Pan y Magia', 'Directorio 3736', 'https://d100mj7v0l85u5.cloudfront.net/s3fs-public/2022-09/las-lecciones-de-las-panaderias-y-reposterias-.jpg', 5, false);
-INSERT INTO public.local VALUES (9, 'Delicias de Trigo', 'Scalabrini Ortiz 954', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI-1jC9AcbA0CmAXm4dykLKWzSQaqVcsoVkg&s', 4, false);
-INSERT INTO public.local VALUES (10, 'Meta', 'Congreso 372', 'https://conelmorrofino.com/wp-content/uploads/2018/10/Las-mejores-panaderias-del-mundo-Portada.jpg', 5, true);
-INSERT INTO public.local VALUES (11, 'London', 'Los Incas 1700', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRED4zyYURs_tjsLS30LWh22iKTe2jvr_qJkg&s', 3, false);
-INSERT INTO public.local VALUES (12, 'Boston', 'Dorrego 789', 'https://ig.com.ar/wp-content/uploads/2022/08/hombre-trabajando-fabrica-pan_23-2148983505.webp', 3, true);
-INSERT INTO public.local VALUES (13, 'Jala', 'Diaz Velez 1500', 'https://sevillasecreta.co/wp-content/uploads/2020/10/shutterstock_1544878508-1-1024x684.jpg', 4, true);
-INSERT INTO public.local VALUES (14, 'Merlin', 'Honorio 534', 'https://www.clavesdigital.com.ar/vistas/fotos_noticias/9275-asi-es-el-panorama-actual-de-las-panaderias-en-colombia.jpg', 5, false);
-INSERT INTO public.local VALUES (15, 'Le pain', 'Rivadavia 444', 'https://portales.vilbo.com/files/uploads/images/articulos/2020/panaderias/panem-mostrador.jpg', 5, true);
-INSERT INTO public.local VALUES (16, 'Pannitti', 'Yatay 535', 'https://i0.wp.com/foodandpleasure.com/wp-content/uploads/2021/03/panaderias-colonia-roma-patisseriedominique.jpg?resize=1024%2C755&ssl=1', 5, false);
-INSERT INTO public.local VALUES (17, 'Madre', 'Vera 600', 'https://www.cucinare.tv/wp-content/uploads/2020/01/Gontran-2-1024x579.jpg', 5, true);
-INSERT INTO public.local VALUES (1, 'UmiGot
-', 'vera 797', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.unicenter.com.ar%2Flocales%2Ftea-connection&psig=AOvVaw0Urkh4wefSXRTEYff834gX&ust=1722342654525000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCMC62sCgzIcDFQAAAAAdAAAAABAE', 4, false);
+COPY public.local (id, nombre, direccion, foto, cantestrellas, confiteria) FROM stdin;
+2	Catamarca	Billinghurst 372	https://cdn-3.expansion.mx/dims4/default/24e9350/2147483647/strip/true/crop/1254x836+0+0/resize/1200x800!/format/webp/quality/60/?url=https%3A%2F%2Fcdn-3.expansion.mx%2Ff0%2F63%2F1781223d4c0d91095e17059bf0ff%2Fistock-1011173366.jpg	4	t
+3	Savona	Anchorena 700	https://insidemdp.com.ar/wp-content/uploads/2022/12/panaderias-en-mar-del-plata.jpeg	5	t
+4	PanaderÃ­a El Sol	Medrano 575	https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAsducQ53DgnHWpiRsVcx2HFBoLCAciOgDKQ&s	3	f
+5	Horno de Oro	San Martin 679	https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg1VAptewBOTJRwSKxlfu32nF1dp5IJuqTuw&s	4	t
+6	El RincÃ³n del Panadero	Acoyte 2300	https://images.adsttc.com/media/images/630e/cc5c/ae0c/1d14/7231/ff36/newsletter/panaderia-pianistas-zooco-estudio_10.jpg?1661914226	5	f
+7	Dulce Hogaza	Estado de Israel 3200	https://media-front.elmostrador.cl/2019/04/Panaderia_variada.jpg	4	f
+8	Pan y Magia	Directorio 3736	https://d100mj7v0l85u5.cloudfront.net/s3fs-public/2022-09/las-lecciones-de-las-panaderias-y-reposterias-.jpg	5	f
+9	Delicias de Trigo	Scalabrini Ortiz 954	https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI-1jC9AcbA0CmAXm4dykLKWzSQaqVcsoVkg&s	4	f
+10	Meta	Congreso 372	https://conelmorrofino.com/wp-content/uploads/2018/10/Las-mejores-panaderias-del-mundo-Portada.jpg	5	t
+11	London	Los Incas 1700	https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRED4zyYURs_tjsLS30LWh22iKTe2jvr_qJkg&s	3	f
+12	Boston	Dorrego 789	https://ig.com.ar/wp-content/uploads/2022/08/hombre-trabajando-fabrica-pan_23-2148983505.webp	3	t
+13	Jala	Diaz Velez 1500	https://sevillasecreta.co/wp-content/uploads/2020/10/shutterstock_1544878508-1-1024x684.jpg	4	t
+14	Merlin	Honorio 534	https://www.clavesdigital.com.ar/vistas/fotos_noticias/9275-asi-es-el-panorama-actual-de-las-panaderias-en-colombia.jpg	5	f
+15	Le pain	Rivadavia 444	https://portales.vilbo.com/files/uploads/images/articulos/2020/panaderias/panem-mostrador.jpg	5	t
+16	Pannitti	Yatay 535	https://i0.wp.com/foodandpleasure.com/wp-content/uploads/2021/03/panaderias-colonia-roma-patisseriedominique.jpg?resize=1024%2C755&ssl=1	5	f
+17	Madre	Vera 600	https://www.cucinare.tv/wp-content/uploads/2020/01/Gontran-2-1024x579.jpg	5	t
+1	UmiGot\n	vera 797	https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.unicenter.com.ar%2Flocales%2Ftea-connection&psig=AOvVaw0Urkh4wefSXRTEYff834gX&ust=1722342654525000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCMC62sCgzIcDFQAAAAAdAAAAABAE	4	f
+\.
 
 
 --
@@ -664,8 +671,10 @@ INSERT INTO public.local VALUES (1, 'UmiGot
 -- Data for Name: metodosdepago; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.metodosdepago VALUES (2, 2, 'Efectivo', NULL, NULL, NULL, NULL);
-INSERT INTO public.metodosdepago VALUES (1, 1, 'Tarjeta', 'Franco Bronsztein', '8764-7632-4532-4742', 733, '2027-11-01');
+COPY public.metodosdepago (id, idusuario, tipo, "nombreTitularTarjeta", "numeroTarjeta", "CVV", "fechaVencimiento") FROM stdin;
+2	2	Efectivo	\N	\N	\N	\N
+1	1	Tarjeta	Franco Bronsztein	8764-7632-4532-4742	733	2027-11-01
+\.
 
 
 --
@@ -674,8 +683,10 @@ INSERT INTO public.metodosdepago VALUES (1, 1, 'Tarjeta', 'Franco Bronsztein', '
 -- Data for Name: pedido; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.pedido VALUES (1, false, 1, 2, 1, 2, '2023-07-24 00:00:00', 3000, NULL, '00000000', 1);
-INSERT INTO public.pedido VALUES (2, false, 2, 1, 2, 1, '2023-08-23 00:00:00', 4000, NULL, '00000001', 2);
+COPY public.pedido (id, delivery, idmetododepago, idusuario, idlocal, cant, fecha, precio, referencia, codigoventa, idproducto) FROM stdin;
+1	f	1	2	1	2	2023-07-24 00:00:00	3000	\N	00000000	1
+2	f	2	1	2	1	2023-08-23 00:00:00	4000	\N	00000001	2
+\.
 
 
 --
@@ -684,54 +695,56 @@ INSERT INTO public.pedido VALUES (2, false, 2, 1, 2, 1, '2023-08-23 00:00:00', 4
 -- Data for Name: productos; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.productos VALUES (1, 'Paquete de Facturas', 600, 300, 'Una docena de facturas variadas', 20, 17);
-INSERT INTO public.productos VALUES (2, 'Paquete de Panes', 800, 400, 'Tres tipos diferentes de panes', 15, 17);
-INSERT INTO public.productos VALUES (3, 'Paquete de Medialunas', 500, 250, 'Una docena de medialunas', 30, 17);
-INSERT INTO public.productos VALUES (4, 'Paquete de Empanadas', 1200, 600, 'Seis empanadas variadas', 10, 2);
-INSERT INTO public.productos VALUES (5, 'Paquete de Tortas', 1500, 750, 'Tres porciones de tortas surtidas', 12, 2);
-INSERT INTO public.productos VALUES (6, 'Paquete de Muffins', 700, 350, 'Seis muffins de diferentes sabores', 25, 2);
-INSERT INTO public.productos VALUES (7, 'Paquete de Bizcochos', 500, 250, 'Una docena de bizcochos', 18, 3);
-INSERT INTO public.productos VALUES (8, 'Paquete de Masas Finas', 1000, 500, 'Un surtido de masas finas', 22, 3);
-INSERT INTO public.productos VALUES (9, 'Paquete de Galletas', 600, 300, 'Una docena de galletas variadas', 30, 3);
-INSERT INTO public.productos VALUES (10, 'Paquete de Churros', 400, 200, 'Seis churros rellenos', 20, 4);
-INSERT INTO public.productos VALUES (11, 'Paquete de Tartas', 1400, 700, 'Tres porciones de tartas surtidas', 15, 4);
-INSERT INTO public.productos VALUES (12, 'Paquete de Croissants', 550, 275, 'Una docena de croissants', 28, 4);
-INSERT INTO public.productos VALUES (13, 'Paquete de Alfajores', 750, 375, 'Seis alfajores de diferentes sabores', 20, 5);
-INSERT INTO public.productos VALUES (14, 'Paquete de Donuts', 650, 325, 'Seis donuts variadas', 25, 5);
-INSERT INTO public.productos VALUES (15, 'Paquete de Brownies', 900, 450, 'Tres brownies de chocolate', 18, 5);
-INSERT INTO public.productos VALUES (16, 'Paquete de Pastelitos', 800, 400, 'Seis pastelitos variados', 22, 6);
-INSERT INTO public.productos VALUES (17, 'Paquete de Tartas de Manzana', 1200, 600, 'Tres porciones de tarta de manzana', 15, 6);
-INSERT INTO public.productos VALUES (18, 'Paquete de Empanadillas', 1000, 500, 'Seis empanadillas de carne', 20, 6);
-INSERT INTO public.productos VALUES (19, 'Paquete de Pan Integral', 600, 300, 'Pan integral fresco', 25, 7);
-INSERT INTO public.productos VALUES (20, 'Paquete de Galletas de Avena', 500, 250, 'Una docena de galletas de avena', 30, 7);
-INSERT INTO public.productos VALUES (21, 'Paquete de Magdalenas', 800, 400, 'Seis magdalenas de diferentes sabores', 20, 7);
-INSERT INTO public.productos VALUES (22, 'Paquete de Pan Dulce', 1000, 500, 'Tres porciones de pan dulce', 15, 8);
-INSERT INTO public.productos VALUES (23, 'Paquete de Rosquillas', 700, 350, 'Una docena de rosquillas', 25, 8);
-INSERT INTO public.productos VALUES (24, 'Paquete de Tartas de Fruta', 1200, 600, 'Tres porciones de tartas de fruta', 12, 8);
-INSERT INTO public.productos VALUES (25, 'Paquete de Eclairs', 900, 450, 'Seis eclairs de chocolate', 20, 9);
-INSERT INTO public.productos VALUES (26, 'Paquete de Pasteles', 800, 400, 'Tres porciones de pasteles surtidos', 18, 9);
-INSERT INTO public.productos VALUES (27, 'Paquete de Mini Tarts', 700, 350, 'Seis mini tarts variadas', 22, 9);
-INSERT INTO public.productos VALUES (28, 'Paquete de Pan de Centeno', 600, 300, 'Pan de centeno fresco', 30, 10);
-INSERT INTO public.productos VALUES (29, 'Paquete de Pan Francés', 500, 250, 'Tres barras de pan francés', 20, 10);
-INSERT INTO public.productos VALUES (30, 'Paquete de Empanadas de Pollo', 1000, 500, 'Seis empanadas de pollo', 25, 10);
-INSERT INTO public.productos VALUES (31, 'Paquete de Galletas de Chocolate', 800, 400, 'Una docena de galletas de chocolate', 22, 11);
-INSERT INTO public.productos VALUES (32, 'Paquete de Brownies de Nuez', 1200, 600, 'Tres brownies de nuez', 15, 11);
-INSERT INTO public.productos VALUES (33, 'Paquete de Pan de Campo', 900, 450, 'Tres porciones de pan de campo', 18, 11);
-INSERT INTO public.productos VALUES (34, 'Paquete de Churros Rellenos', 800, 400, 'Seis churros rellenos de dulce de leche', 20, 12);
-INSERT INTO public.productos VALUES (35, 'Paquete de Masas Surtidas', 1000, 500, 'Un surtido de masas dulces', 25, 12);
-INSERT INTO public.productos VALUES (36, 'Paquete de Croissants de Mantequilla', 1200, 600, 'Una docena de croissants de mantequilla', 28, 12);
-INSERT INTO public.productos VALUES (37, 'Paquete de Panecillos', 700, 350, 'Seis panecillos variados', 22, 13);
-INSERT INTO public.productos VALUES (38, 'Paquete de Tostadas', 500, 250, 'Una docena de tostadas', 30, 13);
-INSERT INTO public.productos VALUES (39, 'Paquete de Muffins de Arándanos', 900, 450, 'Seis muffins de arándanos', 20, 13);
-INSERT INTO public.productos VALUES (40, 'Paquete de Empanadas Vegetarianas', 1200, 600, 'Seis empanadas vegetarianas', 15, 14);
-INSERT INTO public.productos VALUES (41, 'Paquete de Bizcochuelos', 800, 400, 'Tres porciones de bizcochuelos', 18, 14);
-INSERT INTO public.productos VALUES (42, 'Paquete de Galletas de Mantequilla', 700, 350, 'Una docena de galletas de mantequilla', 25, 14);
-INSERT INTO public.productos VALUES (43, 'Paquete de Tartaletas', 1000, 500, 'Seis tartaletas de frutas', 22, 15);
-INSERT INTO public.productos VALUES (44, 'Paquete de Pan de Queso', 900, 450, 'Tres porciones de pan de queso', 18, 15);
-INSERT INTO public.productos VALUES (45, 'Paquete de Roscas de Pascua', 1200, 600, 'Tres porciones de roscas de Pascua', 15, 15);
-INSERT INTO public.productos VALUES (46, 'Paquete de Magdalenas de Naranja', 800, 400, 'Seis magdalenas de naranja', 20, 16);
-INSERT INTO public.productos VALUES (47, 'Paquete de Bizcochos de Limón', 1000, 500, 'Tres porciones de bizcochos de limón', 25, 16);
-INSERT INTO public.productos VALUES (48, 'Paquete de Pan Dulce de Navidad', 1500, 750, 'Tres porciones de pan dulce de Navidad', 12, 16);
+COPY public.productos (id, nombre, preciooriginal, precioxpagina, descripcion, cantdisponible, idlocal) FROM stdin;
+1	Paquete de Facturas	600	300	Una docena de facturas variadas	20	17
+2	Paquete de Panes	800	400	Tres tipos diferentes de panes	15	17
+3	Paquete de Medialunas	500	250	Una docena de medialunas	30	17
+4	Paquete de Empanadas	1200	600	Seis empanadas variadas	10	2
+5	Paquete de Tortas	1500	750	Tres porciones de tortas surtidas	12	2
+6	Paquete de Muffins	700	350	Seis muffins de diferentes sabores	25	2
+7	Paquete de Bizcochos	500	250	Una docena de bizcochos	18	3
+8	Paquete de Masas Finas	1000	500	Un surtido de masas finas	22	3
+9	Paquete de Galletas	600	300	Una docena de galletas variadas	30	3
+10	Paquete de Churros	400	200	Seis churros rellenos	20	4
+11	Paquete de Tartas	1400	700	Tres porciones de tartas surtidas	15	4
+12	Paquete de Croissants	550	275	Una docena de croissants	28	4
+13	Paquete de Alfajores	750	375	Seis alfajores de diferentes sabores	20	5
+14	Paquete de Donuts	650	325	Seis donuts variadas	25	5
+15	Paquete de Brownies	900	450	Tres brownies de chocolate	18	5
+16	Paquete de Pastelitos	800	400	Seis pastelitos variados	22	6
+17	Paquete de Tartas de Manzana	1200	600	Tres porciones de tarta de manzana	15	6
+18	Paquete de Empanadillas	1000	500	Seis empanadillas de carne	20	6
+19	Paquete de Pan Integral	600	300	Pan integral fresco	25	7
+20	Paquete de Galletas de Avena	500	250	Una docena de galletas de avena	30	7
+21	Paquete de Magdalenas	800	400	Seis magdalenas de diferentes sabores	20	7
+22	Paquete de Pan Dulce	1000	500	Tres porciones de pan dulce	15	8
+23	Paquete de Rosquillas	700	350	Una docena de rosquillas	25	8
+24	Paquete de Tartas de Fruta	1200	600	Tres porciones de tartas de fruta	12	8
+25	Paquete de Eclairs	900	450	Seis eclairs de chocolate	20	9
+26	Paquete de Pasteles	800	400	Tres porciones de pasteles surtidos	18	9
+27	Paquete de Mini Tarts	700	350	Seis mini tarts variadas	22	9
+28	Paquete de Pan de Centeno	600	300	Pan de centeno fresco	30	10
+29	Paquete de Pan Francés	500	250	Tres barras de pan francés	20	10
+30	Paquete de Empanadas de Pollo	1000	500	Seis empanadas de pollo	25	10
+31	Paquete de Galletas de Chocolate	800	400	Una docena de galletas de chocolate	22	11
+32	Paquete de Brownies de Nuez	1200	600	Tres brownies de nuez	15	11
+33	Paquete de Pan de Campo	900	450	Tres porciones de pan de campo	18	11
+34	Paquete de Churros Rellenos	800	400	Seis churros rellenos de dulce de leche	20	12
+35	Paquete de Masas Surtidas	1000	500	Un surtido de masas dulces	25	12
+36	Paquete de Croissants de Mantequilla	1200	600	Una docena de croissants de mantequilla	28	12
+37	Paquete de Panecillos	700	350	Seis panecillos variados	22	13
+38	Paquete de Tostadas	500	250	Una docena de tostadas	30	13
+39	Paquete de Muffins de Arándanos	900	450	Seis muffins de arándanos	20	13
+40	Paquete de Empanadas Vegetarianas	1200	600	Seis empanadas vegetarianas	15	14
+41	Paquete de Bizcochuelos	800	400	Tres porciones de bizcochuelos	18	14
+42	Paquete de Galletas de Mantequilla	700	350	Una docena de galletas de mantequilla	25	14
+43	Paquete de Tartaletas	1000	500	Seis tartaletas de frutas	22	15
+44	Paquete de Pan de Queso	900	450	Tres porciones de pan de queso	18	15
+45	Paquete de Roscas de Pascua	1200	600	Tres porciones de roscas de Pascua	15	15
+46	Paquete de Magdalenas de Naranja	800	400	Seis magdalenas de naranja	20	16
+47	Paquete de Bizcochos de Limón	1000	500	Tres porciones de bizcochos de limón	25	16
+48	Paquete de Pan Dulce de Navidad	1500	750	Tres porciones de pan dulce de Navidad	12	16
+\.
 
 
 --
@@ -740,6 +753,28 @@ INSERT INTO public.productos VALUES (48, 'Paquete de Pan Dulce de Navidad', 1500
 -- Data for Name: reseña; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+COPY public."reseña" (id, idusuario, idlocal, cantestrellas, comentario) FROM stdin;
+1	1	2	5	La comida estuvo increíble, muy fresca y bien empaquetada. Sin duda, repetiré.
+2	2	5	4	El sabor es muy bueno, pero tardaron un poco más de lo esperado en la preparación.
+3	3	1	3	La comida estaba bien, aunque podría mejorar la presentación y la temperatura.
+4	1	3	2	No fue una buena experiencia. La comida llegó fría y el pedido estaba incompleto.
+5	2	4	1	Mala experiencia. El tiempo de espera fue excesivo y la calidad de la comida dejó mucho que desear.
+6	3	7	5	Excelente servicio y comida deliciosa. Todo llegó en perfecto estado.
+7	1	6	4	Buena comida y rápida entrega, aunque la cantidad podría ser mayor.
+8	2	9	3	La comida estaba bien, pero esperaba algo mejor por el precio.
+9	3	8	2	El pedido llegó tarde y algunas cosas no estaban bien cocidas.
+10	1	10	1	Muy mala experiencia. La comida no estaba fresca y faltaban elementos en el pedido.
+11	2	12	5	Todo perfecto, desde la rapidez de entrega hasta la calidad de los alimentos.
+12	3	11	4	La comida es buena, pero podrían mejorar la atención al cliente.
+13	1	14	3	Aceptable, aunque creo que hay mejores opciones por el mismo precio.
+14	2	15	2	No me gustó mucho. El sabor no era el esperado y la presentación dejaba mucho que desear.
+15	3	13	1	Muy mala calidad. No volveré a pedir aquí.
+16	1	1	5	Excelente comida y servicio. Todo llegó caliente y en buen estado.
+17	2	4	4	Buena experiencia en general, aunque el empaque podría mejorar.
+18	3	3	3	Comida aceptable, pero nada especial.
+19	1	7	2	No cumplió mis expectativas.
+20	2	9	1	La comida no estaba fresca y el servicio fue muy lento.
+\.
 
 
 --
@@ -748,11 +783,11 @@ INSERT INTO public.productos VALUES (48, 'Paquete de Pan Dulce de Navidad', 1500
 -- Data for Name: tipo; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.tipo VALUES (1, 'casa');
-INSERT INTO public.tipo VALUES (2, 'Oficina
-');
-INSERT INTO public.tipo VALUES (3, 'Otro
-');
+COPY public.tipo (id, descripcion) FROM stdin;
+1	casa
+2	Oficina\n
+3	Otro\n
+\.
 
 
 --
@@ -761,15 +796,11 @@ INSERT INTO public.tipo VALUES (3, 'Otro
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.usuario VALUES (1, 'Uma
-
-', 'Got
-', 1134562341, 'umagot@gmail.com
-', 'Uma1234
-', false);
-INSERT INTO public.usuario VALUES (2, 'Franco
-', 'Bronsztein
-', 1126037372, 'francobronsztein@gmail.com', 'Franco1234', false);
+COPY public.usuario (id, nombre, apellido, telefono, mail, "contraseÃ±a", vendedor) FROM stdin;
+1	Uma\n\n	Got\n	1134562341	umagot@gmail.com\n	Uma1234\n	f
+2	Franco\n	Bronsztein\n	1126037372	francobronsztein@gmail.com	Franco1234	f
+3	Martin	Cygiel	1158308844	martucyg@gmail.com\n	Martin1234\n	f
+\.
 
 
 --
@@ -1265,7 +1296,7 @@ ALTER TABLE ONLY public."reseña"
     ADD CONSTRAINT "reseÃ±a_idusuario_fkey2" FOREIGN KEY (idusuario) REFERENCES public.usuario(id) NOT VALID;
 
 
--- Completed on 2024-08-05 09:34:50
+-- Completed on 2024-08-05 10:32:32
 
 --
 -- PostgreSQL database dump complete
