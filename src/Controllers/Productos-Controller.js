@@ -6,19 +6,17 @@ const svc = new ProductosService();
 
 router.get('/:id', async (req, res) => {
     const id = req.params.id;
-    let respuesta;
     try {
         const productos = await svc.getByIdAsync(id);
-        if (productos) {
-            respuesta = res.status(200).json(id);
+        if (productos && productos.length > 0) {
+            res.status(200).json(productos); 
         } else {
-            respuesta = res.status(404).send('Productos no encontrados');
+            res.status(404).send('Producto no encontrado');
         }
     } catch (error) {
         console.error(error);
-        respuesta = res.status(500).send('Error Interno');
+        res.status(500).send('Error Interno');
     }
-    return respuesta;
 });
 
 export default router;
