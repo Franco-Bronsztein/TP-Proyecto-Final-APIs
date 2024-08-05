@@ -5,6 +5,7 @@ const router = Router();
 const svc =  new PedidoService();
 router.post('/', async (req, res) => {
     try {
+        console.log(req.body)
         const result = await svc.createPedidoAsync(req.body);
         console.log(result)
         if (result) {
@@ -13,7 +14,7 @@ router.post('/', async (req, res) => {
             res.status(500).send('Error Interno');
         }
     } catch (error) {
-        console.error(error);
+       // console.error(error);
         res.status(500).send('Error Interno');
     }
 }); 
