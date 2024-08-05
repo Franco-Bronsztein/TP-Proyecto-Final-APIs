@@ -7,14 +7,16 @@ const { Client, Pool } = pkg;
 export default class PedidoRepository {
     createPedidoAsync = async (idProducto,idLocal,idUsuario,idPedido) => {
         let returnArray = null;
-        console.log(idLocal);
+        console.log(idProducto,idLocal,idUsuario,idPedido);
         const client = new Client(DBConfig);
         try {
             await client.connect();
-            const sql = 'INSERT INTO public."detallePedido" (FK_IDLocal,FK_IDUsuario,FK_IDProducto,FK_IDPedido) VALUES ($1,$2,$3,$4)';
-            const values = [idLocal,idUsuario,idProducto,idPedido];
-            const result = await client.query(sql, values);
+            const sql = `INSERT INTO public."detallePedido"(
+                "FK_IDLocal", "FK_IDUsuario", "FK_IDProducto", "FK_IDPedido") VALUES (${idLocal},${idUsuario},${idProducto},${idPedido})`;
+            // const values = [idLocal,idUsuario,idProducto,idPedido];
+            const result = await client.query(sql);
             await client.end();
+            console.log(result);
             returnArray = result.rows;
         } catch (error) {
             // console.log(error);

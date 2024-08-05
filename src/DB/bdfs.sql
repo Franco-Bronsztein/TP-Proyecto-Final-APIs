@@ -5,7 +5,7 @@
 -- Dumped from database version 16.2
 -- Dumped by pg_dump version 16.0
 
--- Started on 2024-07-29 09:41:28
+-- Started on 2024-08-05 09:34:50
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -617,6 +617,8 @@ INSERT INTO public.carrito VALUES (3, 1, 2, false);
 -- Data for Name: detallePedido; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO public."detallePedido" VALUES (1, 1, 1, 1, 1);
+INSERT INTO public."detallePedido" VALUES (2, 1, 1, 1, 1);
 
 
 --
@@ -785,7 +787,7 @@ SELECT pg_catalog.setval('public.carrito_id_seq', 1, false);
 -- Name: detallePedido_ID_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."detallePedido_ID_seq"', 1, false);
+SELECT pg_catalog.setval('public."detallePedido_ID_seq"', 2, true);
 
 
 --
@@ -977,7 +979,7 @@ CREATE INDEX fki_idlocal ON public."reseña" USING btree (idlocal);
 
 
 --
--- TOC entry 4707 (class 1259 OID 16634)
+-- TOC entry 4707 (class 1259 OID 16479)
 -- Name: fki_idproducto; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -985,7 +987,7 @@ CREATE INDEX fki_idproducto ON public.pedido USING btree (idproducto);
 
 
 --
--- TOC entry 4723 (class 2606 OID 16479)
+-- TOC entry 4723 (class 2606 OID 16480)
 -- Name: carrito carrito_idpaquete_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -994,7 +996,7 @@ ALTER TABLE ONLY public.carrito
 
 
 --
--- TOC entry 4724 (class 2606 OID 16484)
+-- TOC entry 4724 (class 2606 OID 16485)
 -- Name: carrito carrito_idpaquete_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1003,7 +1005,7 @@ ALTER TABLE ONLY public.carrito
 
 
 --
--- TOC entry 4725 (class 2606 OID 16489)
+-- TOC entry 4725 (class 2606 OID 16490)
 -- Name: carrito carrito_idusuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1012,7 +1014,7 @@ ALTER TABLE ONLY public.carrito
 
 
 --
--- TOC entry 4726 (class 2606 OID 16494)
+-- TOC entry 4726 (class 2606 OID 16495)
 -- Name: carrito carrito_idusuario_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1021,7 +1023,16 @@ ALTER TABLE ONLY public.carrito
 
 
 --
--- TOC entry 4727 (class 2606 OID 16499)
+-- TOC entry 4727 (class 2606 OID 16510)
+-- Name: detallePedido detallePedido_IDLocal_FK; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."detallePedido"
+    ADD CONSTRAINT "detallePedido_IDLocal_FK" FOREIGN KEY ("FK_IDLocal") REFERENCES public.local(id) NOT VALID;
+
+
+--
+-- TOC entry 4728 (class 2606 OID 16500)
 -- Name: detallePedido detallePedido_IDPedido_FK; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1030,7 +1041,7 @@ ALTER TABLE ONLY public."detallePedido"
 
 
 --
--- TOC entry 4728 (class 2606 OID 16504)
+-- TOC entry 4729 (class 2606 OID 16505)
 -- Name: detallePedido detallePedido_IDProducto_FK; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1039,25 +1050,16 @@ ALTER TABLE ONLY public."detallePedido"
 
 
 --
--- TOC entry 4729 (class 2606 OID 16509)
--- Name: detallePedido detallePedido_IdLocal_FK; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 4730 (class 2606 OID 16515)
+-- Name: detallePedido detallePedido_IDUsuario_FK; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public."detallePedido"
-    ADD CONSTRAINT "detallePedido_IdLocal_FK" FOREIGN KEY ("FK_IDLocal") REFERENCES public.local(id) NOT VALID;
+    ADD CONSTRAINT "detallePedido_IDUsuario_FK" FOREIGN KEY ("FK_IDUsuario") REFERENCES public.usuario(id) NOT VALID;
 
 
 --
--- TOC entry 4730 (class 2606 OID 16514)
--- Name: detallePedido detallePedido_IdUsuario_FK; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public."detallePedido"
-    ADD CONSTRAINT "detallePedido_IdUsuario_FK" FOREIGN KEY ("FK_IDUsuario") REFERENCES public.usuario(id) NOT VALID;
-
-
---
--- TOC entry 4731 (class 2606 OID 16519)
+-- TOC entry 4731 (class 2606 OID 16520)
 -- Name: direccion direccion_idtipo_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1066,7 +1068,7 @@ ALTER TABLE ONLY public.direccion
 
 
 --
--- TOC entry 4732 (class 2606 OID 16524)
+-- TOC entry 4732 (class 2606 OID 16525)
 -- Name: direccion direccion_idtipo_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1075,7 +1077,7 @@ ALTER TABLE ONLY public.direccion
 
 
 --
--- TOC entry 4733 (class 2606 OID 16529)
+-- TOC entry 4733 (class 2606 OID 16530)
 -- Name: direccion direccion_idusuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1084,7 +1086,7 @@ ALTER TABLE ONLY public.direccion
 
 
 --
--- TOC entry 4734 (class 2606 OID 16534)
+-- TOC entry 4734 (class 2606 OID 16535)
 -- Name: direccion direccion_idusuario_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1093,7 +1095,7 @@ ALTER TABLE ONLY public.direccion
 
 
 --
--- TOC entry 4719 (class 2606 OID 16539)
+-- TOC entry 4719 (class 2606 OID 16540)
 -- Name: Recomendados favoritos_idlocal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1102,7 +1104,7 @@ ALTER TABLE ONLY public."Recomendados"
 
 
 --
--- TOC entry 4720 (class 2606 OID 16544)
+-- TOC entry 4720 (class 2606 OID 16545)
 -- Name: Recomendados favoritos_idlocal_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1111,7 +1113,7 @@ ALTER TABLE ONLY public."Recomendados"
 
 
 --
--- TOC entry 4721 (class 2606 OID 16549)
+-- TOC entry 4721 (class 2606 OID 16550)
 -- Name: Recomendados favoritos_idusuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1120,7 +1122,7 @@ ALTER TABLE ONLY public."Recomendados"
 
 
 --
--- TOC entry 4722 (class 2606 OID 16554)
+-- TOC entry 4722 (class 2606 OID 16555)
 -- Name: Recomendados favoritos_idusuario_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1129,7 +1131,7 @@ ALTER TABLE ONLY public."Recomendados"
 
 
 --
--- TOC entry 4745 (class 2606 OID 16559)
+-- TOC entry 4745 (class 2606 OID 16560)
 -- Name: reseña idlocal; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1138,7 +1140,7 @@ ALTER TABLE ONLY public."reseña"
 
 
 --
--- TOC entry 4736 (class 2606 OID 16629)
+-- TOC entry 4736 (class 2606 OID 16565)
 -- Name: pedido idproducto; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1147,7 +1149,7 @@ ALTER TABLE ONLY public.pedido
 
 
 --
--- TOC entry 4735 (class 2606 OID 16564)
+-- TOC entry 4735 (class 2606 OID 16570)
 -- Name: metodosdepago metodosdepago_idusuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1156,7 +1158,7 @@ ALTER TABLE ONLY public.metodosdepago
 
 
 --
--- TOC entry 4737 (class 2606 OID 16569)
+-- TOC entry 4737 (class 2606 OID 16575)
 -- Name: pedido pedido_idlocal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1165,7 +1167,7 @@ ALTER TABLE ONLY public.pedido
 
 
 --
--- TOC entry 4738 (class 2606 OID 16574)
+-- TOC entry 4738 (class 2606 OID 16580)
 -- Name: pedido pedido_idlocal_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1174,7 +1176,7 @@ ALTER TABLE ONLY public.pedido
 
 
 --
--- TOC entry 4739 (class 2606 OID 16579)
+-- TOC entry 4739 (class 2606 OID 16585)
 -- Name: pedido pedido_idmetododepago_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1183,7 +1185,7 @@ ALTER TABLE ONLY public.pedido
 
 
 --
--- TOC entry 4740 (class 2606 OID 16584)
+-- TOC entry 4740 (class 2606 OID 16590)
 -- Name: pedido pedido_idmetododepago_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1192,7 +1194,7 @@ ALTER TABLE ONLY public.pedido
 
 
 --
--- TOC entry 4741 (class 2606 OID 16589)
+-- TOC entry 4741 (class 2606 OID 16595)
 -- Name: pedido pedido_idusuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1201,7 +1203,7 @@ ALTER TABLE ONLY public.pedido
 
 
 --
--- TOC entry 4742 (class 2606 OID 16594)
+-- TOC entry 4742 (class 2606 OID 16600)
 -- Name: pedido pedido_idusuario_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1210,7 +1212,7 @@ ALTER TABLE ONLY public.pedido
 
 
 --
--- TOC entry 4743 (class 2606 OID 16599)
+-- TOC entry 4743 (class 2606 OID 16605)
 -- Name: productos productos_idlocal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1219,7 +1221,7 @@ ALTER TABLE ONLY public.productos
 
 
 --
--- TOC entry 4744 (class 2606 OID 16604)
+-- TOC entry 4744 (class 2606 OID 16610)
 -- Name: productos productos_idlocal_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1228,7 +1230,7 @@ ALTER TABLE ONLY public.productos
 
 
 --
--- TOC entry 4746 (class 2606 OID 16609)
+-- TOC entry 4746 (class 2606 OID 16615)
 -- Name: reseña reseÃ±a_idlocal_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1237,7 +1239,7 @@ ALTER TABLE ONLY public."reseña"
 
 
 --
--- TOC entry 4747 (class 2606 OID 16614)
+-- TOC entry 4747 (class 2606 OID 16620)
 -- Name: reseña reseÃ±a_idlocal_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1246,7 +1248,7 @@ ALTER TABLE ONLY public."reseña"
 
 
 --
--- TOC entry 4748 (class 2606 OID 16619)
+-- TOC entry 4748 (class 2606 OID 16625)
 -- Name: reseña reseÃ±a_idusuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1255,7 +1257,7 @@ ALTER TABLE ONLY public."reseña"
 
 
 --
--- TOC entry 4749 (class 2606 OID 16624)
+-- TOC entry 4749 (class 2606 OID 16630)
 -- Name: reseña reseÃ±a_idusuario_fkey2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1263,7 +1265,7 @@ ALTER TABLE ONLY public."reseña"
     ADD CONSTRAINT "reseÃ±a_idusuario_fkey2" FOREIGN KEY (idusuario) REFERENCES public.usuario(id) NOT VALID;
 
 
--- Completed on 2024-07-29 09:41:28
+-- Completed on 2024-08-05 09:34:50
 
 --
 -- PostgreSQL database dump complete
