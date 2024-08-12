@@ -5,7 +5,7 @@
 -- Dumped from database version 16.2
 -- Dumped by pg_dump version 16.0
 
--- Started on 2024-08-12 10:33:11
+-- Started on 2024-08-12 10:51:49
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -209,7 +209,7 @@ ALTER SEQUENCE public.favoritos_id_seq OWNED BY public."Recomendados".id;
 
 CREATE TABLE public.local (
     id integer NOT NULL,
-    "nombreLocal" character varying(100) NOT NULL,
+    nombrelocal character varying(100) NOT NULL,
     direccion character varying(100) NOT NULL,
     foto character varying(10000) NOT NULL,
     cantestrellas integer NOT NULL,
@@ -1265,7 +1265,7 @@ ALTER TABLE ONLY public."reseña"
     ADD CONSTRAINT "reseÃ±a_idusuario_fkey2" FOREIGN KEY (idusuario) REFERENCES public.usuario(id) NOT VALID;
 
 
--- Completed on 2024-08-12 10:33:11
+-- Completed on 2024-08-12 10:51:49
 
 --
 -- PostgreSQL database dump complete

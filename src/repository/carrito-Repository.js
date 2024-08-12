@@ -11,7 +11,7 @@ export default class carritoRepository {
         try {
             await client.connect();
             const sql = `
-            SELECT p.nombre,p.preciooriginal,p.precioxpagina,p.descripcion,p.cantdisponible,l.nombreLocal
+            SELECT p.nombre,p.preciooriginal,p.precioxpagina,p.descripcion,p.cantdisponible,l.nombrelocal
             FROM productos p
             JOIN public."carrito" c ON p.id = c.idpaquete
             join public."usuario" u ON c.idusuario = u.id
