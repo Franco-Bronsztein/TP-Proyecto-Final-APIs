@@ -5,7 +5,7 @@
 -- Dumped from database version 16.2
 -- Dumped by pg_dump version 16.0
 
--- Started on 2024-08-05 09:34:50
+-- Started on 2024-08-12 10:33:11
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -22,6 +22,11 @@ SET row_security = off;
 -- TOC entry 4 (class 2615 OID 2200)
 -- Name: public; Type: SCHEMA; Schema: -; Owner: pg_database_owner
 --
+
+CREATE SCHEMA public;
+
+
+ALTER SCHEMA public OWNER TO pg_database_owner;
 
 --
 -- TOC entry 4920 (class 0 OID 0)
@@ -204,7 +209,7 @@ ALTER SEQUENCE public.favoritos_id_seq OWNED BY public."Recomendados".id;
 
 CREATE TABLE public.local (
     id integer NOT NULL,
-    nombre character varying(100) NOT NULL,
+    "nombreLocal" character varying(100) NOT NULL,
     direccion character varying(100) NOT NULL,
     foto character varying(10000) NOT NULL,
     cantestrellas integer NOT NULL,
@@ -1018,7 +1023,7 @@ ALTER TABLE ONLY public.carrito
 
 
 --
--- TOC entry 4727 (class 2606 OID 16510)
+-- TOC entry 4727 (class 2606 OID 16500)
 -- Name: detallePedido detallePedido_IDLocal_FK; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1027,7 +1032,7 @@ ALTER TABLE ONLY public."detallePedido"
 
 
 --
--- TOC entry 4728 (class 2606 OID 16500)
+-- TOC entry 4728 (class 2606 OID 16505)
 -- Name: detallePedido detallePedido_IDPedido_FK; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1036,7 +1041,7 @@ ALTER TABLE ONLY public."detallePedido"
 
 
 --
--- TOC entry 4729 (class 2606 OID 16505)
+-- TOC entry 4729 (class 2606 OID 16510)
 -- Name: detallePedido detallePedido_IDProducto_FK; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1260,8 +1265,9 @@ ALTER TABLE ONLY public."reseña"
     ADD CONSTRAINT "reseÃ±a_idusuario_fkey2" FOREIGN KEY (idusuario) REFERENCES public.usuario(id) NOT VALID;
 
 
--- Completed on 2024-08-05 09:34:50
+-- Completed on 2024-08-12 10:33:11
 
 --
 -- PostgreSQL database dump complete
 --
+

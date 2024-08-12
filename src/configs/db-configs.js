@@ -2,7 +2,7 @@ const config = {
     host       : "Localhost",
     database   : "foodsave",
     user       : "postgres",
-    password   : "khea",
+    password   : "root",
     port       : "5432"
 }
 
