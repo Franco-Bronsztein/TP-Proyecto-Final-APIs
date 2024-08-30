@@ -9,6 +9,8 @@ import PedidoRouter from '../src/Controllers/Pedido-Controller.js'
 import PerfilRouter from '../src/Controllers/Perfil-Controller.js';
 import ProductosRouter from '../src/Controllers/Productos-Controller.js'
 import AgregarCarritoRouter from '../src/Controllers/AgregarCarrito-Controller.js'
+import IniciarSesionRouter from  '../src/Controllers/iniciarSesion-Controller.js'
+
 
 
 import express from "express"; // hacer npm i express
@@ -39,7 +41,7 @@ app.use('/productos', ProductosRouter)
 
 app.use('/agregarAlCarrito',AgregarCarritoRouter)
 
-
+app.use('/iniciarSesion', IniciarSesionRouter)
 
 
 app.listen(port, () => {

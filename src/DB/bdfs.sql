@@ -5,7 +5,7 @@
 -- Dumped from database version 16.2
 -- Dumped by pg_dump version 16.0
 
--- Started on 2024-08-12 10:51:49
+-- Started on 2024-08-30 08:31:34
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -468,7 +468,8 @@ CREATE TABLE public.usuario (
     telefono integer NOT NULL,
     mail character varying(100) NOT NULL,
     "contraseÃ±a" character varying(100) NOT NULL,
-    vendedor boolean NOT NULL
+    vendedor boolean NOT NULL,
+    username character varying
 );
 
 
@@ -766,10 +767,10 @@ INSERT INTO public.usuario VALUES (1, 'Uma
 ', 'Got
 ', 1134562341, 'umagot@gmail.com
 ', 'Uma1234
-', false);
+', false, 'umigot');
 INSERT INTO public.usuario VALUES (2, 'Franco
 ', 'Bronsztein
-', 1126037372, 'francobronsztein@gmail.com', 'Franco1234', false);
+', 1126037372, 'francobronsztein@gmail.com', 'Franco1234', false, 'franbron');
 
 
 --
@@ -1265,7 +1266,7 @@ ALTER TABLE ONLY public."reseña"
     ADD CONSTRAINT "reseÃ±a_idusuario_fkey2" FOREIGN KEY (idusuario) REFERENCES public.usuario(id) NOT VALID;
 
 
--- Completed on 2024-08-12 10:51:49
+-- Completed on 2024-08-30 08:31:34
 
 --
 -- PostgreSQL database dump complete
