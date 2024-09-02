@@ -8,7 +8,7 @@ router.get('/:username/:password', async (req, res) => {
     let respuesta;
     const { username, password } = req.params; 
     const returnArray = await svc.getByUserNameAndPasswordAsync(username, password);
-    console.log(username,password)
+    console.log(username, password)
     if (returnArray != null) {
         respuesta = res.status(200).json(returnArray);
         console.log(returnArray)
