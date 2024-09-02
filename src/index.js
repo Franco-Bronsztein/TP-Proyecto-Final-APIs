@@ -11,7 +11,10 @@ import ProductosRouter from '../src/Controllers/Productos-Controller.js'
 import AgregarCarritoRouter from '../src/Controllers/AgregarCarrito-Controller.js'
 import IniciarSesionRouter from  '../src/Controllers/iniciarSesion-Controller.js'
 import RegistroRouter from '../src/Controllers/registro-Controller.js';
-import { registerUser } from './Controllers/authController.js';
+
+
+
+
 
 import express from "express"; // hacer npm i express
 import cors from "cors"; // hacer npm i cors
