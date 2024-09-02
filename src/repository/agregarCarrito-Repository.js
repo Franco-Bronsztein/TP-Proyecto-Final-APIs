@@ -17,7 +17,7 @@ export default class agregarAlCarritoRepository {
             console.log(result);
             returnArray = result.rows;
         } catch (error) {
-            // console.log(error);
+            console.log(error);
         }
         return returnArray;
     };
