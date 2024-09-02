@@ -1,9 +1,6 @@
 // En postman se usa "localhost:3000"
 //instalar npm i pg
-// Mail npm install nodemailer
 
-import dotenv from 'dotenv';
-dotenv.config();
 import CarritoRouter from '../src/Controllers/Carrito-Controller.js'
 import TiendaRouter from '../src/Controllers/tienda-Controller.js'
 import DireccionRouter from '../src/Controllers/DIrecciones-Controller.js'
@@ -47,8 +44,6 @@ app.use('/agregarAlCarrito',AgregarCarritoRouter)
 app.use('/iniciarSesion', IniciarSesionRouter)
 
 app.use('/registro', RegistroRouter)
-
-app.post('/register', registerUser);
 
 
 app.listen(port, () => {
