@@ -11,12 +11,12 @@ export default class registroRepository {
         try {
             await client.connect();
             const sql = `INSERT INTO public."usuario"(
-                "nombre", "apellido", "telefono", "mail","contraseÃ±a","username","vendedor") VALUES (${registroInfo.nombre},${registroInfo.apellido},${registroInfo.telefono},${registroInfo.mail},${registroInfo.password},${registroInfo.username},${registroInfo.vendedor})`;
+                "nombre", "apellido", "telefono", "mail","password","username","vendedor") VALUES ('${registroInfo.nombre}','${registroInfo.apellido}',${registroInfo.telefono},'${registroInfo.mail}','${registroInfo.password}','${registroInfo.username}',${registroInfo.vendedor})`;
             const result = await client.query(sql);
             await client.end();
             returnArray = result.rows;
         } catch (error) {
-            // console.log(error);
+            console.log(error);
         }
         return returnArray;
     };
@@ -24,15 +24,14 @@ export default class registroRepository {
 
 
 /* 
-[
+    
     {
         "nombre": "Valen",
         "apellido": "Vugin",
         "telefono": 541123417834,
         "mail": "valenvug@gmail.com",
-        "contraseÃ±a": "Valen1234",
+        "password": "Valen1234",
         "username": "Valenvug",
         "vendedor": false
     }
-]
 */
