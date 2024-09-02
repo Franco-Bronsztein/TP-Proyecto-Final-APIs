@@ -11,7 +11,7 @@ export default class registroRepository {
         try {
             await client.connect();
             const sql = `INSERT INTO public."usuario"(
-                "nombre", "apellido", "telefono", "mail","password","username","vendedor") VALUES ('${registroInfo.nombre}','${registroInfo.apellido}',${registroInfo.telefono},'${registroInfo.mail}','${registroInfo.password}','${registroInfo.username}',${registroInfo.vendedor})`;
+                "nombre", "apellido", "telefono", "mail","password","username","vendedor","fechaNac") VALUES ('${registroInfo.nombre}','${registroInfo.apellido}',${registroInfo.telefono},'${registroInfo.mail}','${registroInfo.password}','${registroInfo.username}',${registroInfo.vendedor},${registroInfo.fechaNac})`;
             const result = await client.query(sql);
             await client.end();
             returnArray = result.rows;
@@ -32,6 +32,7 @@ export default class registroRepository {
         "mail": "valenvug@gmail.com",
         "password": "Valen1234",
         "username": "Valenvug",
-        "vendedor": false
+        "vendedor": false,
+        "fechaNac": 11/11/2000
     }
 */
