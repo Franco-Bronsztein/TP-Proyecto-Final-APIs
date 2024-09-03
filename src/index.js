@@ -16,6 +16,8 @@ import RegistroRouter from '../src/Controllers/registro-Controller.js';
 
 
 
+import dotenv from 'dotenv';
+dotenv.config();
 import express from "express"; // hacer npm i express
 import cors from "cors"; // hacer npm i cors
 const app = express();
@@ -47,7 +49,6 @@ app.use('/agregarAlCarrito',AgregarCarritoRouter)
 app.use('/iniciarSesion', IniciarSesionRouter)
 
 app.use('/registro', RegistroRouter)
-
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
