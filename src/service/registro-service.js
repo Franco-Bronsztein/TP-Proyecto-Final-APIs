@@ -32,7 +32,7 @@ export default class registroService {
             });
             await client.mail({ from: 'francobronsztein@gmail.com' }); // Dirección desde la cual envías el correo
             await client.rcpt({ to: correoUsuario }); // Dirección del destinatario
-            await client.data(`Subject: ¡Bienvenido a nuestra app!\nTo: ${correoUsuario}\nContent-Type: text/html; charset=utf-8\n\n<h1>¡Bienvenido!</h1><p>Gracias por registrarte en nuestra aplicación. Estamos encantados de tenerte con nosotros.</p>`);
+            await client.data(`Subject: ¡Bienvenido a nuestra app!\nTo: ${correoUsuario}\nContent-Type: text/html; charset=utf-8\n\n<h1>¡Bienvenido!</h1><p>Gracias por registrarte en nuestra aplicación. Estamos encantados de tenerte con nosotros!!</p>`);
             await client.quit();
             console.log('Correo enviado con éxito a:', correoUsuario);
         } catch (error) {
