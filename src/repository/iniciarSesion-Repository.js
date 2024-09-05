@@ -8,14 +8,14 @@ export default class iniciarSesionRepository {
         let returnArray = null;
         const client = new Client(DBConfig);
         //username = "'" + username + "'" ;
-        //password = "'" + password + "'";
+        //password = "'" + password + "'";  
         try {
             await client.connect();
             console.log(username,password)
             //const values = [username, password];
             const result = await client.query(`SELECT * FROM public.usuario WHERE username = $1 AND password = $2`,[username, password]);
             await client.end();
-            returnArray = result.rows;  
+            returnArray = result.rows;
             console.log(result)
         } catch (error) {
             console.log(error);

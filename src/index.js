@@ -11,8 +11,8 @@ import ProductosRouter from '../src/Controllers/Productos-Controller.js'
 import AgregarCarritoRouter from '../src/Controllers/AgregarCarrito-Controller.js'
 import IniciarSesionRouter from  '../src/Controllers/iniciarSesion-Controller.js'
 import RegistroRouter from '../src/Controllers/registro-Controller.js';
-
-
+import olvidarPasswordRouter from '../src/Controllers/recuperarContraseña.js';
+import actualizarPasswordRouter from '../src/Controllers/actualizarContraseña-Controller.js';
 
 
 
@@ -43,12 +43,16 @@ app.use('/pedido', PedidoRouter)
 app.use('/infoPerfil', PerfilRouter);
 
 app.use('/productos', ProductosRouter)
-  
+
 app.use('/agregarAlCarrito',AgregarCarritoRouter)
 
 app.use('/iniciarSesion', IniciarSesionRouter)
 
 app.use('/registro', RegistroRouter)
+
+app.use('/recuperarPassword', olvidarPasswordRouter)
+
+app.use('/actualizarPassword', actualizarPasswordRouter)
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
