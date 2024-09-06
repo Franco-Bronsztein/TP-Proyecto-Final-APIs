@@ -50,8 +50,6 @@ app.use('/iniciarSesion', IniciarSesionRouter)
 
 app.use('/registro', RegistroRouter)
 
-app.use('/recuperarPassword', olvidarPasswordRouter)
-
 app.use('/actualizarPassword', actualizarPasswordRouter)
 
 app.listen(port, () => {
