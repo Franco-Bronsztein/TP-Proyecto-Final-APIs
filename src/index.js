@@ -11,7 +11,6 @@ import ProductosRouter from '../src/Controllers/Productos-Controller.js'
 import AgregarCarritoRouter from '../src/Controllers/AgregarCarrito-Controller.js'
 import IniciarSesionRouter from  '../src/Controllers/iniciarSesion-Controller.js'
 import RegistroRouter from '../src/Controllers/registro-Controller.js';
-import olvidarPasswordRouter from '../src/Controllers/recuperarContraseña.js';
 import actualizarPasswordRouter from '../src/Controllers/actualizarContraseña-Controller.js';
 
 
