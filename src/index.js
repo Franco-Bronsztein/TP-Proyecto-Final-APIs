@@ -12,6 +12,7 @@ import AgregarCarritoRouter from '../src/Controllers/AgregarCarrito-Controller.j
 import IniciarSesionRouter from  '../src/Controllers/iniciarSesion-Controller.js'
 import RegistroRouter from '../src/Controllers/registro-Controller.js';
 import actualizarPasswordRouter from '../src/Controllers/actualizarContraseña-Controller.js';
+import actualizarPerfilRouter from '../src/Controllers/editarPerfil-Controller.js';
 
 
 
@@ -50,6 +51,8 @@ app.use('/iniciarSesion', IniciarSesionRouter)
 app.use('/registro', RegistroRouter)
 
 app.use('/actualizarPassword', actualizarPasswordRouter)
+
+app.use('/actualizarPerfil',actualizarPerfilRouter )
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
