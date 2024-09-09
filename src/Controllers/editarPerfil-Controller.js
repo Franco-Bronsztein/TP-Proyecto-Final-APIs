@@ -4,7 +4,7 @@ import editarPerfilService from '../service/editarPerfil-service.js';
 const router = Router();
 const svc = new editarPerfilService();
 
-router.post('/editar', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const result = await svc.editarPerfilAsync(req.body);
         if (result) {

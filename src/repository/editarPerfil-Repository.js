@@ -15,7 +15,7 @@ export default class editarPerfilRepository {
             const values = [userData.nombre, userData.apellido, userData.telefono, userData.password, userData.vendedor, userData.username, userData.fechaNac, userData.fotoPerfil, userData.mail];
             const result = await client.query(sql, values);
             await client.end();
-            returnArray = result.rowCount; // número de filas actualizadas
+            returnArray = result.rowCount;
         } catch (error) {
             console.log(error);
         }
