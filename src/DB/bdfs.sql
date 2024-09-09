@@ -5,7 +5,7 @@
 -- Dumped from database version 16.2
 -- Dumped by pg_dump version 16.0
 
--- Started on 2024-09-02 11:41:16
+-- Started on 2024-09-09 09:35:24
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -764,15 +764,16 @@ INSERT INTO public.tipo (id, descripcion) VALUES (3, 'Otro
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vendedor, username, "fechaNac", "fotoPerfil") VALUES (2, 'Franco
-', 'Bronsztein
-', 1126037372, 'francobronsztein@gmail.com', 'Franco1234', false, 'franbron', NULL, NULL);
+INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vendedor, username, "fechaNac", "fotoPerfil") VALUES (11, 'Valen', 'Vugin', 541123417834, 'francobronsztein@gmail.com', 'Valen1234', false, 'Vaddddddsddddsddlenvug', '2024-09-03', NULL);
 INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vendedor, username, "fechaNac", "fotoPerfil") VALUES (1, 'Uma
 
 ', 'Got
 ', 1134562341, 'umagot@gmail.com
-', 'Uma1234', false, 'umigot', NULL, NULL);
-INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vendedor, username, "fechaNac", "fotoPerfil") VALUES (6, 'Valen', 'Vugin', 541123417834, 'valenvug@gmail.com', 'Valen1234', false, 'Valenvug', NULL, NULL);
+', 'Uma1234', false, 'umigot', '2006-11-22', NULL);
+INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vendedor, username, "fechaNac", "fotoPerfil") VALUES (2, 'Franco
+', 'Bronsztein
+', 1126037372, 'francobrondsztein@gmail.com', 'Franco1234', false, 'franbron', '2007-03-18', NULL);
+INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vendedor, username, "fechaNac", "fotoPerfil") VALUES (3, 'Valen', 'Vugin', 541123417834, 'valenvug@gmail.com', 'Valen1234', false, 'Valenvug', '2007-05-12', NULL);
 
 
 --
@@ -871,7 +872,7 @@ SELECT pg_catalog.setval('public.tipo_id_seq', 1, false);
 -- Name: usuario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.usuario_id_seq', 6, true);
+SELECT pg_catalog.setval('public.usuario_id_seq', 11, true);
 
 
 --
@@ -1268,7 +1269,7 @@ ALTER TABLE ONLY public."reseña"
     ADD CONSTRAINT "reseÃ±a_idusuario_fkey2" FOREIGN KEY (idusuario) REFERENCES public.usuario(id) NOT VALID;
 
 
--- Completed on 2024-09-02 11:41:16
+-- Completed on 2024-09-09 09:35:24
 
 --
 -- PostgreSQL database dump complete
