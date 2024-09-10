@@ -1,27 +1,42 @@
-import DBConfig from '../configs/db-configs.js'
-import pkg from 'pg'
+import DBConfig from '../configs/db-configs.js';
+import pkg from 'pg';
 
-
-const { Client, Pool } = pkg;
+const { Client } = pkg;
 
 export default class registroRepository {
-    newPasswordUpdaterAsync = async (newPassword) => {
-        let returnArray = null;
+    checkUserExistsAsync = async (mail) => {
         const client = new Client(DBConfig);
+        let user = null;
         try {
             await client.connect();
-            const sql = `UPDATE public."usuario"
-            SET "password" = '${newPassword.password}'
-            WHERE "mail" = '${newPassword.mail}';`;
-            const result = await client.query(sql);
-            await client.end();
-            returnArray = result.rows;
+            const sql = 'SELECT * FROM public."usuario" WHERE mail = $1';
+            const result = await client.query(sql, [mail]);
+            user = result.rows[0];
         } catch (error) {
-            console.log(error);
+            console.error(error);
+        } finally {
+            await client.end();
         }
-        return returnArray;
+        return user;
+    };
+
+    newPasswordUpdaterAsync = async (newPassword) => {
+        const client = new Client(DBConfig);
+        let success = false;
+        try {
+            await client.connect();
+            const sql = 'UPDATE public."usuario" SET "password" = $1 WHERE mail = $2';
+            const result = await client.query(sql, [newPassword.password, newPassword.mail]);
+            success = result.rowCount > 0;
+        } catch (error) {
+            console.error(error);
+        } finally {
+            await client.end();
+        }
+        return success;
     };
 }
+
 
 
 /*
