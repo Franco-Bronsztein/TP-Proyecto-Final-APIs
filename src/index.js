@@ -14,10 +14,10 @@ import RegistroRouter from '../src/Controllers/registro-Controller.js';
 import actualizarPasswordRouter from '../src/Controllers/actualizarContraseña-Controller.js';
 import actualizarPerfilRouter from '../src/Controllers/editarPerfil-Controller.js';
 
-
-
 import dotenv from 'dotenv';
 dotenv.config();
+
+
 import express from "express"; // hacer npm i express
 import cors from "cors"; // hacer npm i cors
 const app = express();
@@ -57,3 +57,57 @@ app.use('/actualizarPerfil',actualizarPerfilRouter )
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
     })
+
+// GOOGLE AUTH
+import AuthRouter from '../src/Controllers/auth-Controller.js';
+import passport from 'passport';
+import GoogleStrategy from 'passport-google-oauth20';
+import session from 'express-session';
+
+
+app.use('/auth', AuthRouter);
+// Configurar las sesiones
+app.use(session({
+    secret: 'franco1234', // Cambia esto por una clave segura
+    resave: false,
+    saveUninitialized: true,
+}));
+
+// Inicializar passport y sesiones
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Configura la estrategia de Google
+passport.use(new GoogleStrategy({
+    clientID: "487630240358-8pcdabos74sg2h53vnnv0cvo6io59a3d.apps.googleusercontent.com",   // De tu archivo .env
+    clientSecret: "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",  // De tu archivo .env
+    callbackURL: "http://localhost:3000/auth/google/callback"
+  },
+  (accessToken, refreshToken, profile, done) => {
+    // Aquí puedes verificar el usuario en la base de datos o crear uno nuevo
+    // Por simplicidad, devolvemos el perfil de Google tal como es
+    return done(null, profile);
+  }
+));
+
+// Serializa al usuario
+passport.serializeUser((user, done) => {
+    done(null, user);
+});
+
+// Deserializa al usuario
+passport.deserializeUser((user, done) => {
+    done(null, user);
+});
+
+// Ruta para iniciar sesión con Google
+app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+// Ruta para el callback de Google después de la autenticación
+app.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/' }),
+  (req, res) => {
+    // Aquí rediriges a la página que prefieras después del login exitoso
+    res.redirect('/');
+  }
+);
