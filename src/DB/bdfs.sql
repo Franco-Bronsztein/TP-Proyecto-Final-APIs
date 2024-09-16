@@ -5,7 +5,7 @@
 -- Dumped from database version 16.2
 -- Dumped by pg_dump version 16.0
 
--- Started on 2024-09-09 09:35:24
+-- Started on 2024-09-16 11:27:13
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -464,14 +464,15 @@ ALTER SEQUENCE public.tipo_id_seq OWNED BY public.tipo.id;
 CREATE TABLE public.usuario (
     id integer NOT NULL,
     nombre character varying(100) NOT NULL,
-    apellido character varying(100) NOT NULL,
-    telefono bigint NOT NULL,
+    apellido character varying(100),
+    telefono bigint,
     mail character varying(100) NOT NULL,
-    password character varying(100) NOT NULL,
-    vendedor boolean NOT NULL,
+    password character varying(100),
+    vendedor boolean,
     username character varying,
     "fechaNac" date,
-    "fotoPerfil" character varying(300)
+    "fotoPerfil" character varying(300),
+    google_id numeric
 );
 
 
@@ -764,16 +765,18 @@ INSERT INTO public.tipo (id, descripcion) VALUES (3, 'Otro
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vendedor, username, "fechaNac", "fotoPerfil") VALUES (11, 'Valen', 'Vugin', 541123417834, 'francobronsztein@gmail.com', 'Valen1234', false, 'Vaddddddsddddsddlenvug', '2024-09-03', NULL);
-INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vendedor, username, "fechaNac", "fotoPerfil") VALUES (1, 'Uma
+INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vendedor, username, "fechaNac", "fotoPerfil", google_id) VALUES (11, 'Valen', 'Vugin', 541123417834, 'francobronsztein@gmail.com', 'Valen1234', false, 'Vaddddddsddddsddlenvug', '2024-09-03', NULL, NULL);
+INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vendedor, username, "fechaNac", "fotoPerfil", google_id) VALUES (1, 'Uma
 
 ', 'Got
 ', 1134562341, 'umagot@gmail.com
-', 'Uma1234', false, 'umigot', '2006-11-22', NULL);
-INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vendedor, username, "fechaNac", "fotoPerfil") VALUES (2, 'Franco
+', 'Uma1234', false, 'umigot', '2006-11-22', NULL, NULL);
+INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vendedor, username, "fechaNac", "fotoPerfil", google_id) VALUES (2, 'Franco
 ', 'Bronsztein
-', 1126037372, 'francobrondsztein@gmail.com', 'Franco1234', false, 'franbron', '2007-03-18', NULL);
-INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vendedor, username, "fechaNac", "fotoPerfil") VALUES (3, 'Valen', 'Vugin', 541123417834, 'valenvug@gmail.com', 'Valen1234', false, 'Valenvug', '2007-05-12', NULL);
+', 1126037372, 'francobrondsztein@gmail.com', 'Franco1234', false, 'franbron', '2007-03-18', NULL, NULL);
+INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vendedor, username, "fechaNac", "fotoPerfil", google_id) VALUES (3, 'Valen', 'Vugin', 541123417834, 'valenvug@gmail.com', 'Valen1234', false, 'Valenvug', '2007-05-12', NULL, NULL);
+INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vendedor, username, "fechaNac", "fotoPerfil", google_id) VALUES (16, 'Franco Bronsztein', NULL, NULL, 'francobronsztein@gmail.com', NULL, NULL, NULL, NULL, NULL, 101634604253330794737);
+INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vendedor, username, "fechaNac", "fotoPerfil", google_id) VALUES (17, 'MARTIN RABER', NULL, NULL, 'mraber2006@gmail.com', NULL, NULL, NULL, NULL, NULL, 110942052581526478413);
 
 
 --
@@ -872,7 +875,7 @@ SELECT pg_catalog.setval('public.tipo_id_seq', 1, false);
 -- Name: usuario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.usuario_id_seq', 11, true);
+SELECT pg_catalog.setval('public.usuario_id_seq', 17, true);
 
 
 --
@@ -1269,7 +1272,7 @@ ALTER TABLE ONLY public."reseña"
     ADD CONSTRAINT "reseÃ±a_idusuario_fkey2" FOREIGN KEY (idusuario) REFERENCES public.usuario(id) NOT VALID;
 
 
--- Completed on 2024-09-09 09:35:24
+-- Completed on 2024-09-16 11:27:14
 
 --
 -- PostgreSQL database dump complete
