@@ -10,7 +10,7 @@ export default class recomendadosRepository {
         const client = new Client(DBConfig);
         try {
             await client.connect();
-            const sql = `SELECT L.nombre, L.direccion, L.foto, L.cantestrellas 
+            const sql = `SELECT L.nombreLocal, L.direccion, L.foto, L.cantestrellas 
             FROM local L 
             JOIN public."Recomendados" R ON L.id = R.idlocal 
             WHERE R.idusuario = $1;`;
