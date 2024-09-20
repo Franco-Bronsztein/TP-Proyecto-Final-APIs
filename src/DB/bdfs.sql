@@ -5,7 +5,7 @@
 -- Dumped from database version 16.2
 -- Dumped by pg_dump version 16.0
 
--- Started on 2024-09-16 11:27:13
+-- Started on 2024-09-20 09:00:21
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -621,8 +621,6 @@ INSERT INTO public.carrito (id, idusuario, idpaquete, pedidoactivo) VALUES (3, 1
 -- Data for Name: detallePedido; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public."detallePedido" ("ID", "FK_IDLocal", "FK_IDUsuario", "FK_IDProducto", "FK_IDPedido") VALUES (1, 1, 1, 1, 1);
-INSERT INTO public."detallePedido" ("ID", "FK_IDLocal", "FK_IDUsuario", "FK_IDProducto", "FK_IDPedido") VALUES (2, 1, 1, 1, 1);
 
 
 --
@@ -658,8 +656,6 @@ INSERT INTO public.local (id, nombrelocal, direccion, foto, cantestrellas, confi
 INSERT INTO public.local (id, nombrelocal, direccion, foto, cantestrellas, confiteria) VALUES (15, 'Le pain', 'Rivadavia 444', 'https://portales.vilbo.com/files/uploads/images/articulos/2020/panaderias/panem-mostrador.jpg', 5, true);
 INSERT INTO public.local (id, nombrelocal, direccion, foto, cantestrellas, confiteria) VALUES (16, 'Pannitti', 'Yatay 535', 'https://i0.wp.com/foodandpleasure.com/wp-content/uploads/2021/03/panaderias-colonia-roma-patisseriedominique.jpg?resize=1024%2C755&ssl=1', 5, false);
 INSERT INTO public.local (id, nombrelocal, direccion, foto, cantestrellas, confiteria) VALUES (17, 'Madre', 'Vera 600', 'https://www.cucinare.tv/wp-content/uploads/2020/01/Gontran-2-1024x579.jpg', 5, true);
-INSERT INTO public.local (id, nombrelocal, direccion, foto, cantestrellas, confiteria) VALUES (1, 'UmiGot
-', 'vera 797', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.unicenter.com.ar%2Flocales%2Ftea-connection&psig=AOvVaw0Urkh4wefSXRTEYff834gX&ust=1722342654525000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCMC62sCgzIcDFQAAAAAdAAAAABAE', 4, false);
 
 
 --
@@ -678,7 +674,6 @@ INSERT INTO public.metodosdepago (id, idusuario, tipo, "nombreTitularTarjeta", "
 -- Data for Name: pedido; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.pedido (id, delivery, idmetododepago, idusuario, idlocal, cant, fecha, precio, referencia, codigoventa, idproducto) VALUES (1, false, 1, 2, 1, 2, '2023-07-24 00:00:00', 3000, NULL, '00000000', 1);
 INSERT INTO public.pedido (id, delivery, idmetododepago, idusuario, idlocal, cant, fecha, precio, referencia, codigoventa, idproducto) VALUES (2, false, 2, 1, 2, 1, '2023-08-23 00:00:00', 4000, NULL, '00000001', 2);
 
 
@@ -765,7 +760,6 @@ INSERT INTO public.tipo (id, descripcion) VALUES (3, 'Otro
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vendedor, username, "fechaNac", "fotoPerfil", google_id) VALUES (11, 'Valen', 'Vugin', 541123417834, 'francobronsztein@gmail.com', 'Valen1234', false, 'Vaddddddsddddsddlenvug', '2024-09-03', NULL, NULL);
 INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vendedor, username, "fechaNac", "fotoPerfil", google_id) VALUES (1, 'Uma
 
 ', 'Got
@@ -775,8 +769,9 @@ INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vend
 ', 'Bronsztein
 ', 1126037372, 'francobrondsztein@gmail.com', 'Franco1234', false, 'franbron', '2007-03-18', NULL, NULL);
 INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vendedor, username, "fechaNac", "fotoPerfil", google_id) VALUES (3, 'Valen', 'Vugin', 541123417834, 'valenvug@gmail.com', 'Valen1234', false, 'Valenvug', '2007-05-12', NULL, NULL);
-INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vendedor, username, "fechaNac", "fotoPerfil", google_id) VALUES (16, 'Franco Bronsztein', NULL, NULL, 'francobronsztein@gmail.com', NULL, NULL, NULL, NULL, NULL, 101634604253330794737);
-INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vendedor, username, "fechaNac", "fotoPerfil", google_id) VALUES (17, 'MARTIN RABER', NULL, NULL, 'mraber2006@gmail.com', NULL, NULL, NULL, NULL, NULL, 110942052581526478413);
+INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vendedor, username, "fechaNac", "fotoPerfil", google_id) VALUES (4, 'Valen', 'Vugin', 541123417834, 'francobronsztein@gmail.com', 'Valen1234', false, 'Vaddddddsddddsddlenvug', '2024-09-03', NULL, NULL);
+INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vendedor, username, "fechaNac", "fotoPerfil", google_id) VALUES (5, 'Noah', 'Denenberg Korob', NULL, 'noahdk06@gmail.com', 'oauth2_generated_password', NULL, 'NoahDenenberg Korob', NULL, NULL, 101130043956114330688);
+INSERT INTO public.usuario (id, nombre, apellido, telefono, mail, password, vendedor, username, "fechaNac", "fotoPerfil", google_id) VALUES (6, 'Franco', 'Bronsztein', NULL, 'francobronsztein@gmail.com', 'logingGoogle', NULL, 'Franco + '' '' + Bronsztein', NULL, NULL, 101634604253330794737);
 
 
 --
@@ -875,7 +870,7 @@ SELECT pg_catalog.setval('public.tipo_id_seq', 1, false);
 -- Name: usuario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.usuario_id_seq', 17, true);
+SELECT pg_catalog.setval('public.usuario_id_seq', 19, true);
 
 
 --
@@ -1272,7 +1267,7 @@ ALTER TABLE ONLY public."reseña"
     ADD CONSTRAINT "reseÃ±a_idusuario_fkey2" FOREIGN KEY (idusuario) REFERENCES public.usuario(id) NOT VALID;
 
 
--- Completed on 2024-09-16 11:27:14
+-- Completed on 2024-09-20 09:00:21
 
 --
 -- PostgreSQL database dump complete
