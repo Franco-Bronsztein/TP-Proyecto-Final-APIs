@@ -69,6 +69,10 @@ passport.use(new GoogleStrategy({
       const telefono = profile.phoneNumbers ? profile.phoneNumbers[0].value : null;
       const fechaNacimiento = profile.birthday || null; // Algunos perfiles pueden no tener esta información.
       const fotoPerfil = photos && photos.length > 0 ? photos[0].value : null; // Si hay fotos disponibles, tomar la primera.
+      if (fotoPerfil == null)
+      {
+        fotoPerfil = "https://definicion.de/wp-content/uploads/2019/07/perfil-de-usuario.png"
+      }
       
       // Generar el username como combinación de nombre + apellido
       const username = `${nombre} ${apellido}`;
