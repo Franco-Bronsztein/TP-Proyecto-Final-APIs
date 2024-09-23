@@ -5,7 +5,7 @@
 -- Dumped from database version 16.2
 -- Dumped by pg_dump version 16.0
 
--- Started on 2024-09-20 09:00:21
+-- Started on 2024-09-23 08:45:34
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -143,10 +143,14 @@ ALTER SEQUENCE public."detallePedido_ID_seq" OWNED BY public."detallePedido"."ID
 
 CREATE TABLE public.direccion (
     id integer NOT NULL,
-    ubicacion character varying(100) NOT NULL,
+    calle character varying(100) NOT NULL,
     idusuario integer NOT NULL,
-    idtipo integer NOT NULL,
-    referencia character varying(100) NOT NULL
+    idetiqueta integer NOT NULL,
+    referencia character varying(100) NOT NULL,
+    pais character varying(100),
+    detalle character varying(100),
+    "Detalledeentrega" integer,
+    ciudad character varying
 );
 
 
@@ -629,9 +633,9 @@ INSERT INTO public.carrito (id, idusuario, idpaquete, pedidoactivo) VALUES (3, 1
 -- Data for Name: direccion; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.direccion (id, ubicacion, idusuario, idtipo, referencia) VALUES (1, 'Vera 797
+INSERT INTO public.direccion (id, calle, idusuario, idetiqueta, referencia, pais, detalle, "Detalledeentrega", ciudad) VALUES (1, 'Vera 797
 ', 1, 2, 'Alado de kiosco rojo y casa de porton verde
-');
+', 'Argentina', 'Piso 12 A', 1, 'Buenos Aires');
 
 
 --
@@ -1066,7 +1070,7 @@ ALTER TABLE ONLY public."detallePedido"
 --
 
 ALTER TABLE ONLY public.direccion
-    ADD CONSTRAINT direccion_idtipo_fkey FOREIGN KEY (idtipo) REFERENCES public.tipo(id) NOT VALID;
+    ADD CONSTRAINT direccion_idtipo_fkey FOREIGN KEY (idetiqueta) REFERENCES public.tipo(id) NOT VALID;
 
 
 --
@@ -1075,7 +1079,7 @@ ALTER TABLE ONLY public.direccion
 --
 
 ALTER TABLE ONLY public.direccion
-    ADD CONSTRAINT direccion_idtipo_fkey1 FOREIGN KEY (idtipo) REFERENCES public.tipo(id) NOT VALID;
+    ADD CONSTRAINT direccion_idtipo_fkey1 FOREIGN KEY (idetiqueta) REFERENCES public.tipo(id) NOT VALID;
 
 
 --
@@ -1267,7 +1271,7 @@ ALTER TABLE ONLY public."reseña"
     ADD CONSTRAINT "reseÃ±a_idusuario_fkey2" FOREIGN KEY (idusuario) REFERENCES public.usuario(id) NOT VALID;
 
 
--- Completed on 2024-09-20 09:00:21
+-- Completed on 2024-09-23 08:45:34
 
 --
 -- PostgreSQL database dump complete
