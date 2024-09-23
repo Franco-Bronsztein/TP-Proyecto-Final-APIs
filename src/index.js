@@ -146,7 +146,6 @@ app.use('/registro', RegistroRouter);
 app.use('/actualizarPassword', actualizarPasswordRouter);
 app.use('/actualizarPerfil', actualizarPerfilRouter);
 app.use('/mostrarTodasResenias', mostrarReseñasRouter);
-app.use('/agregarResenias', agregarReseñasRouter)
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
