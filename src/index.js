@@ -11,6 +11,8 @@ import IniciarSesionRouter from '../src/Controllers/iniciarSesion-Controller.js'
 import RegistroRouter from '../src/Controllers/registro-Controller.js';
 import actualizarPasswordRouter from '../src/Controllers/actualizarContraseña-Controller.js';
 import actualizarPerfilRouter from '../src/Controllers/editarPerfil-Controller.js';
+import mostrarReseñasRouter from '../src/Controllers/mostrarReseñas-Controller.js';
+import agregarReseñasRouter from '../src/Controllers/agregarReseñas-controller.js';
 
 import dotenv from 'dotenv';
 dotenv.config();
@@ -143,6 +145,8 @@ app.use('/iniciarSesion', IniciarSesionRouter);
 app.use('/registro', RegistroRouter);
 app.use('/actualizarPassword', actualizarPasswordRouter);
 app.use('/actualizarPerfil', actualizarPerfilRouter);
+app.use('/mostrarTodasResenias', mostrarReseñasRouter);
+app.use('/agregarResenias', agregarReseñasRouter)
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
