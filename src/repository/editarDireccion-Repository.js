@@ -9,13 +9,14 @@ export default class editarDireccionRepository {
         const client = new Client(DBConfig);
         try {
             await client.connect();
-            const sql = `UPDATE public."direccion"
+            const sql = `
+            UPDATE public."direccion"
             SET "pais" = '${direccionData.pais}', 
                 "ciudad" = '${direccionData.ciudad}', 
                 "calle" = '${direccionData.calle}', 
                 "detalle" = '${direccionData.detalle}', 
                 "idetiqueta" = ${direccionData.idetiqueta}, 
-                "detalleeentrega" = ${direccionData.detalleentrega}, 
+                "Detalledeentrega" = ${direccionData.detalleentrega}, 
                 "referencia" = '${direccionData.referencia}'
             WHERE "id" = ${direccionData.id};`;
             

@@ -4,7 +4,7 @@ import editarDireccionService from '../service/editarDireccion-service.js';
 const router = Router();
 const svc = new editarDireccionService();
 
-router.post('/editarDireccion', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const result = await svc.editarDireccionAsync(req.body);
         if (result) {
