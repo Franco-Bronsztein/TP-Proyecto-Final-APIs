@@ -6,7 +6,9 @@ const svc = new eliminarReseñaService();
 
 router.delete('/:id', async (req, res) => {
     try {
-        const { idReseña } = req.params;
+        const idReseña = req.params.id; // Asegúrate de usar req.params.id
+        console.log(`ID de reseña recibido: ${idReseña}`);
+
         const result = await svc.eliminarReseñaAsync(idReseña);
         if (result) {
             console.log('Reseña eliminada exitosamente');
@@ -20,5 +22,6 @@ router.delete('/:id', async (req, res) => {
         res.status(500).send('Error Interno');
     }
 });
+
 
 export default router;

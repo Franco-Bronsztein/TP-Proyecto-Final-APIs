@@ -11,14 +11,11 @@ export default class eliminarReseñaRepository {
             await client.connect();
             console.log('Conectado a la base de datos');
             
-            
-            const sql = `DELETE FROM reseña WHERE idreseña = $1`;
+            const sql = 'DELETE FROM reseña WHERE id = $1'; // Corrección de la consulta SQL
             const values = [idReseña];
-            
 
             const result = await client.query(sql, values);
-            console.log(`Resultado de la consulta: ${result.rowCount} filas afectadas`);
-            
+            console.log(`Resultado de la consulta: ${result.rowCount} filas afectadas`); // Corrección de la cadena
 
             success = result.rowCount > 0;
         } catch (error) {
