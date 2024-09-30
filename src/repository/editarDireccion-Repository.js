@@ -11,16 +11,30 @@ export default class editarDireccionRepository {
             await client.connect();
             const sql = `
             UPDATE public."direccion"
-            SET "pais" = '${direccionData.pais}', 
-                "ciudad" = '${direccionData.ciudad}', 
-                "calle" = '${direccionData.calle}', 
-                "detalle" = '${direccionData.detalle}', 
-                "idetiqueta" = ${direccionData.idetiqueta}, 
-                "Detalledeentrega" = ${direccionData.detalleentrega}, 
-                "referencia" = '${direccionData.referencia}'
-            WHERE "id" = ${direccionData.id};`;
-            
-            const result = await client.query(sql);
+            SET "pais" = $1, 
+                "ciudad" = $2, 
+                "calle" = $3, 
+                "detalle" = $4, 
+                "idetiqueta" = $5, 
+                "Detalledeentrega" = $6, 
+                "referencia" = $7,
+                "idusuario" = $8
+            WHERE "id" = $9;
+            `;
+
+            const values = [
+                direccionData.pais, 
+                direccionData.ciudad, 
+                direccionData.calle, 
+                direccionData.detalle, 
+                direccionData.idetiqueta, 
+                direccionData.detalleentrega, 
+                direccionData.referencia, 
+                direccionData.idusuario,
+                direccionData.id
+            ];
+
+            const result = await client.query(sql, values);
             await client.end();
             returnArray = result.rows;
         } catch (error) {
