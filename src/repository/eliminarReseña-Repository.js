@@ -10,16 +10,23 @@ export default class eliminarReseñaRepository {
         try {
             await client.connect();
             console.log('Conectado a la base de datos');
-            const sql = `DELETE FROM reseña WHERE idUsuario = $1`;  // Verificar que este campo existe en tu tabla
-            const values = [idUsuario];
+            
+            
+            const sql = `DELETE FROM reseña WHERE idusuario = $1 AND idreseña = $2`;
+            const values = [idUsuario, idReseña];
+            
+
             const result = await client.query(sql, values);
             console.log(`Resultado de la consulta: ${result.rowCount} filas afectadas`);
-            success = result.rowCount > 0;  // rowCount indica cuántas filas se eliminaron
+            
+
+            success = result.rowCount > 0;
         } catch (error) {
             console.log('Error en la consulta SQL:', error);
         } finally {
             await client.end();  
         }
-        return success;  // Retorna true si eliminó al menos una fila
+        
+        return success; 
     }
 }
