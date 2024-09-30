@@ -4,7 +4,7 @@ import pkg from 'pg';
 const { Client } = pkg;
 
 export default class eliminarReseñaRepository {
-    eliminarReseñaAsync = async (idUsuario) => {
+    eliminarReseñaAsync = async (idUsuario, idReseña) => {
         let success = false; 
         const client = new Client(DBConfig);
         try {

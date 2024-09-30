@@ -6,9 +6,9 @@ const svc = new eliminarReseñaService();
 
 router.delete('/:id', async (req, res) => {
     try {
-        const { id } = req.params;
+        const { id, idReseña } = req.params;
         console.log(`ID recibido: ${id}`); // Verificar que el ID se está pasando correctamente
-        const result = await svc.eliminarReseñaAsync(id);
+        const result = await svc.eliminarReseñaAsync(id, idReseña);
         if (result) {
             console.log('Reseña eliminada exitosamente');
             res.status(200).json({ message: 'Reseña eliminada exitosamente' });

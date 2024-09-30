@@ -43,3 +43,20 @@ export default class editarDireccionRepository {
         return returnArray;
     };
 }
+
+
+/*
+
+{
+    "pais" : "argentina",
+   "ciudad" : "ddd",
+"calle" : "ddd",
+ "detalle" : "ffff", 
+   "idetiqueta" : 1,
+                "Detalledeentrega" : 1, 
+          "referencia" : "ddddd",
+                "idusuario" : 2,
+                "id":3
+}
+
+*/
