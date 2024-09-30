@@ -4,7 +4,7 @@ import pkg from 'pg';
 const { Client } = pkg;
 
 export default class eliminarReseñaRepository {
-    eliminarReseñaAsync = async (idUsuario, idReseña) => {
+    eliminarReseñaAsync = async (idReseña) => {
         let success = false; 
         const client = new Client(DBConfig);
         try {
@@ -12,8 +12,8 @@ export default class eliminarReseñaRepository {
             console.log('Conectado a la base de datos');
             
             
-            const sql = `DELETE FROM reseña WHERE idusuario = $1 AND idreseña = $2`;
-            const values = [idUsuario, idReseña];
+            const sql = `DELETE FROM reseña WHERE idreseña = $1`;
+            const values = [idReseña];
             
 
             const result = await client.query(sql, values);
