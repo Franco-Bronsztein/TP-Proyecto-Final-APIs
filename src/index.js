@@ -14,6 +14,9 @@ import actualizarPerfilRouter from '../src/Controllers/editarPerfil-Controller.j
 import mostrarReseñasRouter from '../src/Controllers/mostrarReseñas-Controller.js';
 import agregarReseñasRouter from '../src/Controllers/agregarReseñas-controller.js';
 import editarDireccionRouter from '../src/Controllers/editarDireccion-Controller.js';
+import eliminarReseñaRouter from '../src/Controllers/eliminarReseña-Controller.js';
+
+
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -147,7 +150,9 @@ app.use('/actualizarPassword', actualizarPasswordRouter);
 app.use('/actualizarPerfil', actualizarPerfilRouter);
 app.use('/mostrarTodasResenias', mostrarReseñasRouter);
 app.use('/agregarResenias', agregarReseñasRouter);
-app.use('/editarDireccion', editarDireccionRouter)
+app.use('/editarDireccion', editarDireccionRouter);
+app.use('/eliminarReseniaPorIdUsuario', eliminarReseñaRouter);
+
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
