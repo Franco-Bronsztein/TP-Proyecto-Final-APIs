@@ -14,12 +14,9 @@ export default class editarDireccionRepository {
             SET "pais" = $1, 
                 "ciudad" = $2, 
                 "calle" = $3, 
-                "detalle" = $4, 
-                "idetiqueta" = $5, 
-                "Detalledeentrega" = $6, 
-                "referencia" = $7,
-                "idusuario" = $8
-            WHERE "id" = $9;
+                "detalle" = $4,
+                "referencia" = $5,
+            WHERE "idusuario" = $6;
             `;
 
             const values = [
@@ -27,11 +24,9 @@ export default class editarDireccionRepository {
                 direccionData.ciudad, 
                 direccionData.calle, 
                 direccionData.detalle, 
-                direccionData.idetiqueta, 
-                direccionData.detalleentrega, 
-                direccionData.referencia, 
-                direccionData.idusuario,
-                direccionData.id
+                direccionData.idetiqueta,
+                direccionData.referencia,
+                direccionData.idusuario
             ];
 
             const result = await client.query(sql, values);
@@ -52,11 +47,8 @@ export default class editarDireccionRepository {
    "ciudad" : "ddd",
 "calle" : "ddd",
  "detalle" : "ffff", 
-   "idetiqueta" : 1,
-                "Detalledeentrega" : 1, 
           "referencia" : "ddddd",
                 "idusuario" : 2,
-                "id":3
 }
 
 */

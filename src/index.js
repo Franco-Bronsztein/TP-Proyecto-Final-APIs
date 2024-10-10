@@ -15,7 +15,7 @@ import mostrarReseñasRouter from '../src/Controllers/mostrarReseñas-Controller
 import agregarReseñasRouter from '../src/Controllers/agregarReseñas-controller.js';
 import editarDireccionRouter from '../src/Controllers/editarDireccion-Controller.js';
 import eliminarReseñaRouter from '../src/Controllers/eliminarReseña-Controller.js';
-
+import mostrarDireTodaRouter from '../src/Controllers/mostrarTodaDire-controller.js';
 
 import dotenv from 'dotenv';
 dotenv.config();
@@ -152,6 +152,8 @@ app.use('/mostrarTodasResenias', mostrarReseñasRouter);
 app.use('/agregarResenias', agregarReseñasRouter);
 app.use('/editarDireccion', editarDireccionRouter);
 app.use('/eliminarReseniaPorIdUsuario', eliminarReseñaRouter);
+//mostrar info toda,editarla,eliminarla
+app.use('/mostrarDireccionToda', mostrarDireTodaRouter)
 
 
 
