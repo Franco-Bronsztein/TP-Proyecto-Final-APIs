@@ -4,12 +4,15 @@ import eliminarReseñaService from '../service/eliminarReseña-service.js';
 const router = Router();
 const svc = new eliminarReseñaService();
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:comentario/:idusuario', async (req, res) => {
     try {
-        const idReseña = req.params.id; // Asegúrate de usar req.params.id
-        console.log(`ID de reseña recibido: ${idReseña}`);
+        const comentario = req.params.comentario;
+        const idUsuario = req.params.idusuario;
 
-        const result = await svc.eliminarReseñaAsync(idReseña);
+        console.log(`Comentario recibido: ${comentario}`);
+        console.log(`ID de usuario recibido: ${idUsuario}`);
+
+        const result = await svc.eliminarReseñaAsync(comentario, idUsuario);
         if (result) {
             console.log('Reseña eliminada exitosamente');
             res.status(200).json({ message: 'Reseña eliminada exitosamente' });
@@ -22,6 +25,5 @@ router.delete('/:id', async (req, res) => {
         res.status(500).send('Error Interno');
     }
 });
-
 
 export default router;
