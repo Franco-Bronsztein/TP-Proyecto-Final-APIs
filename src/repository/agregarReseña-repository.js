@@ -6,7 +6,6 @@ const { Client } = pkg;
 export default class agregarAlCarritoRepository {
     agregarReseñaAsync = async (cantEstrellas, comentario, idUsuario, idLocal) => {
         let returnArray = null;
-        comentario = "'" + comentario + "'"
         const client = new Client(DBConfig);
         try {
             await client.connect();
