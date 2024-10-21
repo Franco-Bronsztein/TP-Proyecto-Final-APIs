@@ -17,7 +17,7 @@ import editarDireccionRouter from '../src/Controllers/editarDireccion-Controller
 import eliminarReseñaRouter from '../src/Controllers/eliminarReseña-Controller.js';
 import mostrarDireTodaRouter from '../src/Controllers/mostrarTodaDire-controller.js';
 import guardarDireccionRouter from '../src/Controllers/guardarDireccion-Controller.js';
-
+import eliminarDireccionRouter from '../src/Controllers/eliminarDireccion-Controller.js';
 
 import dotenv from 'dotenv';
 dotenv.config();
@@ -174,13 +174,14 @@ app.use('/mostrarTodasResenias', mostrarReseñasRouter);
 app.use('/agregarResenias', agregarReseñasRouter);
 app.use('/editarDireccion', editarDireccionRouter);
 app.use('/eliminarReseniaPorIdUsuario', eliminarReseñaRouter);
-//eliminar dire y guardar
+//eliminar dire
 //api direccion de donde se manda el pedido
 //APi pagar todo
 //Codigo BD y api
 //mandar mail cambiar contraseña (revisar API)
 app.use('/guardarDireccion', guardarDireccionRouter)
 app.use('/mostrarDireccionToda', mostrarDireTodaRouter)
+app.use('/eliminarDireccion', eliminarDireccionRouter)
 
 
 

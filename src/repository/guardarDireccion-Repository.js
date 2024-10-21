@@ -12,7 +12,7 @@ export default class guardarDireccionRepository {
             
             // Incluir el userId en el INSERT
             const sql = `INSERT INTO public."direccion"(
-                "pais", "ciudad", "calle", "referencia", "Detalledeentrega", "idusuario") 
+                "pais", "ciudad", "calle", "referencia", "detalle", "idusuario") 
                 VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`;
                 
             const values = [pais, ciudad, calle, referencia, detalledeentrega, userId]; 
@@ -37,8 +37,7 @@ export default class guardarDireccionRepository {
     "ciudad": "Buenos Aires",
     "calle": "Bucarelli",
     "referencia": "1er Piso",
-    "detalledeentrega": "1"
-
+    "detalle": "Piso 12"
 }  
 
 */
