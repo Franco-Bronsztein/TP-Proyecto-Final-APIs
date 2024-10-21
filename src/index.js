@@ -129,10 +129,30 @@ app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'em
 
 app.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/' }),
-  (req, res) => {
-    res.redirect('http://localhost:3001/view/home');
+  async (req, res) => {
+    try {
+      // Obtener el mail del usuario autenticado
+      const userMail = req.user.mail; // req.user contiene el usuario autenticado
+
+      // Consultar el ID del usuario con ese mail
+      const result = await pool.query('SELECT id FROM usuario WHERE mail = $1', [userMail]);
+      
+      if (result.rows.length > 0) {
+        const userId = result.rows[0].id;
+
+        // Redirigir a la URL deseada con el mail y el ID como parámetros
+        res.redirect(`http://localhost:3001/view/home?mail=${encodeURIComponent(userMail)}&id=${userId}`);
+      } else {
+        res.status(404).send('Usuario no encontrado');
+      }
+    } catch (err) {
+      console.error('Error al obtener el ID del usuario:', err);
+      res.status(500).send('Error interno del servidor');
+    }
   }
 );
+
+
 
 //        APIS PROYECTO
 
@@ -152,7 +172,10 @@ app.use('/mostrarTodasResenias', mostrarReseñasRouter);
 app.use('/agregarResenias', agregarReseñasRouter);
 app.use('/editarDireccion', editarDireccionRouter);
 app.use('/eliminarReseniaPorIdUsuario', eliminarReseñaRouter);
-//mostrar info toda,editarla,eliminarla
+//mostrar info toda direccion,editarla,eliminarla
+//api direccion de donde se manda el pedido
+//APi pagar todo
+//COdigo BD y api
 app.use('/mostrarDireccionToda', mostrarDireTodaRouter)
 
 
