@@ -27,3 +27,15 @@ export default class eliminarReseñaRepository {
         return success; 
     }
 }
+
+/*
+{
+    "userId": 3,      
+    "pais": "Argentina",
+    "ciudad": "Buenos Aires",
+    "calle": "Bucarelli",
+    "referencia": "1er Piso",
+    "detalledeentrega": "1"
+
+}
+*/

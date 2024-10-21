@@ -174,7 +174,6 @@ app.use('/mostrarTodasResenias', mostrarReseñasRouter);
 app.use('/agregarResenias', agregarReseñasRouter);
 app.use('/editarDireccion', editarDireccionRouter);
 app.use('/eliminarReseniaPorIdUsuario', eliminarReseñaRouter);
-//eliminar dire
 //api direccion de donde se manda el pedido
 //APi pagar todo
 //Codigo BD y api
