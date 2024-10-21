@@ -10,7 +10,7 @@ export default class direccionTodaRepository {
         const client = new Client(DBConfig);
         try {
             await client.connect();
-            const sql = `SLECT calle,referencia,pais,detalle,ciudad FROM direccion WHERE idusuario = $1`;
+            const sql = `SELECT calle,referencia,pais,detalle,ciudad FROM direccion WHERE idusuario = $1`;
             const values = [idusuario]
             const result = await client.query(sql,values);
             await client.end();
